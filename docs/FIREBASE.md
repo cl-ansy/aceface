@@ -5,7 +5,6 @@
 ### Document Model
 
 ```json
-// Collection of games available
 floors/{floorId}
 	"games": {
 		"$gameId": true
@@ -19,7 +18,7 @@ games/{gameId}
         "deckCount": 2,
         "penetration": 0.65
     },
-    "players": {
+    "seats": {
 		1: {
             "userId": "$userId",
             "displayName": ""
@@ -33,9 +32,9 @@ rounds/{roundId}
     "status": "new" | "started" | "ended",
     "dealerCard": "",
     "turn": "$handsIndex",
-    "playerOrder": ["$userId", "dealer"],
-	"handsByPlayer": {
-		"$playerId": "$handId",
+    "turnOrder": ["$userId", "dealer"],
+	"userHands": {
+		"$userId": "$handId",
 		"dealer": "$handId"
 	}
 
@@ -50,18 +49,23 @@ hands/{handId}
     "plays": []
 
 shoes/{shoeId}
-    "gameId": "$gameId",
+    "gameId": "",
+    "nextCard": 0,
     "cards": {
-        "$cardId": "KH",
+        0: "KH",
         ...
-    },
-    "shuffled": ["$cardId", ...],
-    "discard": ["$cardId", ...]
+    }
 
 users/{userId}
 	"balance": 1000,
     "games": {
-        "$gameId": true,
+        "$gameId": true
+    },
+    "rounds": {
+        "$roundId": true
+    },
+    "hands": {
+        "$handId": true
     }
 	public/info
 		"displayName": "Chris"
