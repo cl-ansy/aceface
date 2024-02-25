@@ -5,6 +5,7 @@
 ### Document Model
 
 ```json
+// Collection of games available
 floors/{floorId}
 	"games": {
 		"$gameId": true
@@ -12,38 +13,56 @@ floors/{floorId}
 
 games/{gameId}
 	"type": "blackjack",
-	"rules": {
-		"deckCount": 2,
-		"penetration": 0.65
-	},
-	"seats": {
-		0: "dealer",
-		1: "$userId",
-		2: null,
-		3: "$userId",
+    "roundId": "",
+    "shoeId": "",
+    "rules": {
+        "deckCount": 2,
+        "penetration": 0.65
+    },
+    "players": {
+		1: {
+            "userId": "$userId",
+            "displayName": ""
+        },
+		2: null
+    }
+
+rounds/{roundId}
+    "gameId": "",
+    "shoeId": ""
+    "status": "new" | "started" | "ended",
+    "dealerCard": "",
+    "turn": "$handsIndex",
+    "playerOrder": ["$userId", "dealer"],
+	"handsByPlayer": {
+		"$playerId": "$handId",
+		"dealer": "$handId"
 	}
-	"state": {
-		"turnUserId": "",
-		"dealerUpCard": ""
-	},
-	players/dealer
-		"revealed": false
-	players/{userId}
-		"action": "",
-		"hands": {
-			0: {
-				"total": 21,
-				0: "AD",
-				1: "KH"
-			}
-		}
-	shoes/shoe
-		"draw": [],
-		"discard": []
+
+hands/{handId}
+    "visible": true,
+    "turn": true,
+    "gameId": "",
+    "userId": "",
+    "displayName": "",
+    "bet": 0,
+    "nextActions": [],
+    "plays": []
+
+shoes/{shoeId}
+    "gameId": "$gameId",
+    "cards": {
+        "$cardId": "KH",
+        ...
+    },
+    "shuffled": ["$cardId", ...],
+    "discard": ["$cardId", ...]
 
 users/{userId}
 	"balance": 1000,
-	"gameIds": [],
+    "games": {
+        "$gameId": true,
+    }
 	public/info
 		"displayName": "Chris"
 ```
@@ -75,6 +94,33 @@ service cloud.firestore {
 }
 ```
 
-### Actions
+### Queries
 
-### Listeners
+### Functions
+
+#### General
+
+| Event              | Triggers                                | Actions                                  |
+| ------------------ | --------------------------------------- | ---------------------------------------- |
+| Create new game    |                                         |                                          |
+| Player joins seat  |                                         | Add user to game.                        |
+| Player leaves seat |                                         | Remove user from game                    |
+|                    |                                         | If round is new, remove user from round. |
+| Start new round    | No current round                        | Add game players to round                |
+|                    | Current round ended                     | Check shoe penetration                   |
+|                    |                                         | Create hands                             |
+| Shuffle shoe       | Shoe penetration hit AND round is ended |                                          |
+| Deal round         | 10s after first bet                     |                                          |
+| End round          | No more player actions to perform       |                                          |
+
+#### Blackjack
+
+| Event            | Trigger                          |
+| ---------------- | -------------------------------- |
+| Hit              |                                  |
+| Stand            |                                  |
+| Split            |                                  |
+| Double           |                                  |
+| Player turn ends | action == "stand" OR total >= 21 |
+
+### Actions
