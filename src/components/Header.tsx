@@ -12,7 +12,7 @@ interface User {
 }
 
 export default function Header() {
-  const [user, setUser] = useState({
+  const [user, setUser] = useState<User>({
     uid: '',
   });
 
