@@ -1,30 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-import {
-  onAuthStateChanged,
-  signInAnonymously,
-} from "@/lib/firebase/auth";
-
-interface User {
-  uid: string;
-}
+import { useUserStore } from "@/state/userStore";
 
 export default function Header() {
-  const [user, setUser] = useState<User>({
-    uid: '',
-  });
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged((user: User) => {
-      setUser(user);
-    })
-
-    signInAnonymously();
-
-    return () => unsubscribe();
-  }, []);
+  const user = useUserStore((state) => state.user);
 
   return (
     <header>

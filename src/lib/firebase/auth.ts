@@ -5,7 +5,7 @@ import {
 
 import { auth } from "@/lib/firebase/firebase";
 
-export function onAuthStateChanged(cb) {
+export function onAuthStateChanged(cb: (user) => void) {
   return _onAuthStateChanged(auth, cb);
 }
 
