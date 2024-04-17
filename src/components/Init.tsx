@@ -2,9 +2,7 @@
 
 import { useEffect } from "react";
 
-import {
-  useUserStore
-} from "@/state/userStore";
+import { useUserStore } from "@/state/userStore";
 
 export default function Header() {
   const subscribe = useUserStore((state) => state.subscribe);
@@ -16,9 +14,7 @@ export default function Header() {
     signInAnonymously();
 
     return () => unsubscribe();
-  }, []);
+  }, [subscribe, signInAnonymously]);
 
-  return (
-    <></>
-  );
+  return <></>;
 }
