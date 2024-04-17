@@ -8,13 +8,24 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        bg: "#daf5f0",
+        main: "#7fbc8c",
+        mainAccent: "#58a769", // not needed for shadcn
+      },
+      borderRadius: {
+        base: "5px",
+      },
+      boxShadow: {
+        base: "4px 4px 0px 0px rgba(0,0,0,1)",
+      },
+      translate: {
+        boxShadowX: "4px",
+        boxShadowY: "4px",
       },
     },
   },
   plugins: [],
 };
+
 export default config;

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import Init from "@/components/Init";
-import Header from "@/components/Header";
+import Navbar from "@/components/Navbar";
 
 import "@/styles/globals.css";
 
@@ -19,12 +19,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-bg color-main">
       <body className={inter.className}>
         <Init />
-        <Header />
+        <Navbar />
 
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+        <main className="flex min-h-screen flex-col items-center justify-center p-24">
           {children}
         </main>
       </body>
