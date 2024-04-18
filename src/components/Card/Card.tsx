@@ -1,0 +1,18 @@
+import { cn } from "@/lib/utils";
+import * as Cards from "@/components/Card/CardFactory";
+
+export default function Card({
+  idx,
+  selector,
+}: {
+  idx: number;
+  selector: string;
+}) {
+  const CardSVG = Cards[selector as keyof typeof Cards];
+
+  return (
+    <div className={cn("card", `card-${idx}`)}>
+      <CardSVG />
+    </div>
+  );
+}
