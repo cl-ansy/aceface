@@ -1,5 +1,5 @@
-import CardShow from "@/components/Card/CardShow";
+import Casino from "@/game/Casino";
 
 export default function Page() {
-  return <CardShow />;
+  return <Casino />;
 }
