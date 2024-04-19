@@ -1,43 +1,49 @@
-import { cn } from "@/lib/utils";
+"use client";
 
-import { DECK } from "@/components/Card/constants";
-import Card from "@/components/Card/Card";
-import AllCards from "@/assets/cards.svg";
+import { Suspense, useRef } from "react";
+import { Camera, Canvas, useLoader } from "@react-three/fiber";
+import { Html, Image, MapControls, Svg, useProgress } from "@react-three/drei";
+import { TextureLoader } from "three/src/loaders/TextureLoader";
+
+function Loader() {
+  const { progress } = useProgress();
+  return <Html center>{progress} % loaded</Html>;
+}
+
+function Lighting() {
+  return (
+    <>
+      <ambientLight intensity={5} />
+      <directionalLight color="red" position={[0, 0, 5]} />
+    </>
+  );
+}
+
+function Controls() {
+  const cam = useRef<Camera>();
+  return <MapControls camera={cam.current} screenSpacePanning />;
+}
+
+function Card() {
+  const colorMap = useLoader(TextureLoader, "/cards/vector/JD.svg");
+  return (
+    <mesh>
+      <planeGeometry args={[2.5, 3.5]} />
+      <meshBasicMaterial map={colorMap} transparent />
+    </mesh>
+  );
+}
 
 export default function CardShow() {
   return (
-    <div>
-      <div className="hidden">
-        <AllCards />
-      </div>
-      <div className={cn("card", `card-1`)}>
-        <svg width="2.5in" height="3.5in">
-          <use href="#svg-card-2C" />
-        </svg>
-      </div>
-      <div className={cn("card", `card-2`)}>
-        <svg width="2.5in" height="3.5in">
-          <use href="#svg-card-2D" />
-        </svg>
-      </div>
-      <div className={cn("card", `card-2`)}>
-        <svg width="2.5in" height="3.5in">
-          <use href="#svg-card-2H" />
-        </svg>
-      </div>
-      <div className={cn("card", `card-2`)}>
-        <svg width="2.5in" height="3.5in">
-          <use href="#svg-card-2S" />
-        </svg>
-      </div>
-      <div className="">
-        <svg width="2.5in" height="3.5in">
-          <use href="#svg-card-JC" />
-        </svg>
-      </div>
-      {/* {DECK.map((card, i) => (
-        <Card idx={i} key={`${card}-${i}`} selector={card} />
-      ))} */}
+    <div id="canvas-container" className="w-screen h-screen">
+      <Canvas dpr={2} linear flat>
+        <Suspense fallback={<Loader />}>
+          <Card />
+        </Suspense>
+        <Lighting />
+        <Controls />
+      </Canvas>
     </div>
   );
 }

@@ -3,33 +3,12 @@ const nextConfig = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
-      use: [
-        {
-          loader: "@svgr/webpack",
-          options: {
-            svgoConfig: {
-              plugins: [
-                {
-                  name: "cleanupIds",
-                  params: {
-                    remove: false,
-                    minify: false,
-                  },
-                },
-                //     {
-                //       name: "cleanupIDs",
-                //       active: false,
-                //       // cleanupIDs: false,
-                //     },
-              ],
-            },
-          },
-        },
-      ],
+      use: "@svgr/webpack",
     });
 
     return config;
   },
+  transpilePackages: ["three"],
   env: {
     /*
       These are meant to be public, so we commit them for nextjs to use in
