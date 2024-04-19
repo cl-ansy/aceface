@@ -2,14 +2,8 @@
 
 import { Suspense, useRef } from "react";
 import { Camera, Canvas, useFrame, MeshProps } from "@react-three/fiber";
-import {
-  Html,
-  MapControls,
-  PresentationControls,
-  useProgress,
-  useTexture,
-} from "@react-three/drei";
-import { Mesh, MeshBasicMaterial } from "three";
+import { Html, MapControls, useProgress, useTexture } from "@react-three/drei";
+import { Mesh } from "three";
 
 function Loader() {
   const { progress } = useProgress();
@@ -39,7 +33,7 @@ function Card({ name }: { name: string }) {
   ]);
 
   useFrame(({ clock }) => {
-    meshRef.current.rotation.y = clock.getElapsedTime();
+    meshRef.current.rotation.z = clock.getElapsedTime() * 3;
   });
 
   return (
@@ -60,11 +54,15 @@ function Card({ name }: { name: string }) {
 export default function CardShow() {
   return (
     <div id="canvas-container" className="w-screen h-screen">
-      <Canvas dpr={[1, 2]} linear flat>
+      <Canvas
+        dpr={[1, 2]}
+        orthographic
+        camera={{ zoom: 50, position: [0, 0, 100] }}
+        linear
+        flat
+      >
         <Suspense fallback={<Loader />}>
-          <PresentationControls>
-            <Card name="JD" />
-          </PresentationControls>
+          <Card name="JD" />
         </Suspense>
         <Lighting />
         <Controls />
