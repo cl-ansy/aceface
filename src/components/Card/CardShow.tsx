@@ -31,7 +31,7 @@ function Controls() {
 }
 
 function Card({ name }: { name: string }) {
-  const meshRef = useRef<Mesh>(null);
+  const meshRef = useRef<Mesh>(null!);
 
   const [cardTexture, backTexture] = useTexture([
     `/cards/vector/${name}.svg`,
@@ -39,9 +39,7 @@ function Card({ name }: { name: string }) {
   ]);
 
   useFrame(({ clock }) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y = clock.getElapsedTime();
-    }
+    meshRef.current.rotation.y = clock.getElapsedTime();
   });
 
   return (
