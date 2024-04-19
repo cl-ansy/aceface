@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense, useRef } from "react";
-import { Camera, Canvas, useFrame, MeshProps } from "@react-three/fiber";
+import { Camera, Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Html, MapControls, useProgress, useTexture } from "@react-three/drei";
 import { Mesh } from "three";
 
@@ -20,8 +20,9 @@ function Lighting() {
 }
 
 function Controls() {
-  const cam = useRef<Camera>();
-  return <MapControls camera={cam.current} screenSpacePanning />;
+  return (
+    <MapControls enableDamping={true} zoomToCursor={true} screenSpacePanning />
+  );
 }
 
 function Card({ name }: { name: string }) {
@@ -33,12 +34,13 @@ function Card({ name }: { name: string }) {
   ]);
 
   useFrame(({ clock }) => {
-    meshRef.current.rotation.z = clock.getElapsedTime() * 3;
+    // console.log(clock.getElapsedTime() * 3);
+    // meshRef.current.rotation.y = clock.getElapsedTime();
   });
 
   return (
     <mesh ref={meshRef}>
-      <boxGeometry attach="geometry" args={[2.5, 3.5, 0]} />
+      <boxGeometry args={[250, 350, 0]} />
       {[null, null, null, null, cardTexture, backTexture].map((texture, i) => (
         <meshBasicMaterial
           key={i}
@@ -55,9 +57,10 @@ export default function CardShow() {
   return (
     <div id="canvas-container" className="w-screen h-screen">
       <Canvas
+        frameloop="demand"
         dpr={[1, 2]}
+        camera={{ zoom: 0.4 }}
         orthographic
-        camera={{ zoom: 50, position: [0, 0, 100] }}
         linear
         flat
       >
