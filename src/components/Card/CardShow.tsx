@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense, useRef } from "react";
-import { Camera, Canvas, extend, useLoader } from "@react-three/fiber";
+import { Camera, Canvas, useFrame, MeshProps } from "@react-three/fiber";
 import {
   Html,
   MapControls,
@@ -9,6 +9,7 @@ import {
   useProgress,
   useTexture,
 } from "@react-three/drei";
+import { Mesh, MeshBasicMaterial } from "three";
 
 function Loader() {
   const { progress } = useProgress();
@@ -30,13 +31,21 @@ function Controls() {
 }
 
 function Card({ name }: { name: string }) {
+  const meshRef = useRef<Mesh>(null);
+
   const [cardTexture, backTexture] = useTexture([
     `/cards/vector/${name}.svg`,
     "/cards/vector/Back.svg",
   ]);
 
+  useFrame(({ clock }) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.y = clock.getElapsedTime();
+    }
+  });
+
   return (
-    <mesh>
+    <mesh ref={meshRef}>
       <boxGeometry attach="geometry" args={[2.5, 3.5, 0]} />
       {[null, null, null, null, cardTexture, backTexture].map((texture, i) => (
         <meshBasicMaterial
