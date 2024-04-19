@@ -1,9 +1,14 @@
 "use client";
 
 import { Suspense, useRef } from "react";
-import { Camera, Canvas, useLoader } from "@react-three/fiber";
-import { Html, Image, MapControls, Svg, useProgress } from "@react-three/drei";
-import { TextureLoader } from "three/src/loaders/TextureLoader";
+import { Camera, Canvas, extend, useLoader } from "@react-three/fiber";
+import {
+  Html,
+  MapControls,
+  PresentationControls,
+  useProgress,
+  useTexture,
+} from "@react-three/drei";
 
 function Loader() {
   const { progress } = useProgress();
@@ -24,12 +29,23 @@ function Controls() {
   return <MapControls camera={cam.current} screenSpacePanning />;
 }
 
-function Card() {
-  const colorMap = useLoader(TextureLoader, "/cards/vector/JD.svg");
+function Card({ name }: { name: string }) {
+  const [cardTexture, backTexture] = useTexture([
+    `/cards/vector/${name}.svg`,
+    "/cards/vector/Back.svg",
+  ]);
+
   return (
     <mesh>
-      <planeGeometry args={[2.5, 3.5]} />
-      <meshBasicMaterial map={colorMap} transparent />
+      <boxGeometry attach="geometry" args={[2.5, 3.5, 0]} />
+      {[null, null, null, null, cardTexture, backTexture].map((texture, i) => (
+        <meshBasicMaterial
+          key={i}
+          attach={`material-${i}`}
+          map={texture}
+          transparent
+        />
+      ))}
     </mesh>
   );
 }
@@ -37,9 +53,11 @@ function Card() {
 export default function CardShow() {
   return (
     <div id="canvas-container" className="w-screen h-screen">
-      <Canvas dpr={2} linear flat>
+      <Canvas dpr={[1, 2]} linear flat>
         <Suspense fallback={<Loader />}>
-          <Card />
+          <PresentationControls>
+            <Card name="JD" />
+          </PresentationControls>
         </Suspense>
         <Lighting />
         <Controls />
