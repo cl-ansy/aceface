@@ -1,4 +1,4 @@
-import { useSprings, useSpringRef } from "@react-spring/three";
+import { useSprings } from "@react-spring/three";
 
 import CardMesh from "@/game/Meshes/CardMesh";
 

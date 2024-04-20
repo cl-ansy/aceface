@@ -1,5 +1,6 @@
 import { useTexture } from "@react-three/drei";
 import { SpringValue, animated } from "@react-spring/three";
+import { RoundedBox } from "@react-three/drei";
 
 export default function CardMesh({
   name,
