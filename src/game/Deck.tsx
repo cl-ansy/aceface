@@ -1,4 +1,4 @@
-import { useSprings } from "@react-spring/three";
+import { useSprings, useSpringRef } from "@react-spring/three";
 
 import CardMesh from "@/game/Meshes/CardMesh";
 
@@ -17,7 +17,7 @@ export default function Deck() {
       rotationX: Math.PI,
       rotationZ: 0,
       config: {
-        tension: 238,
+        tension: 150,
         friction: 29,
       },
     }),
@@ -26,16 +26,15 @@ export default function Deck() {
 
   const handleOnClick = () => {
     api.start((i) => ({
-      positionZ: count - i,
-      rotationX: 0,
-      delay: startDelay(i),
-      immediate: true,
-    }));
-    api.start((i) => ({
       positionX: -400 - Math.random() * 200,
       positionY: (0.5 - Math.random()) * 200,
+      positionZ: count - i,
+      rotationX: 0,
       rotationZ: 0.5 - Math.random(),
       delay: startDelay(i),
+      immediate: (key) => {
+        return ["positionZ", "rotationX"].includes(key);
+      },
     }));
   };
 
