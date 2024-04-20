@@ -11,63 +11,62 @@ floors/{floorId}
 	}
 
 games/{gameId}
-    "round_id": "",
-    "shoe_id": "",
-    "type": "blackjack",
-    "rules": {
-        "deckCount": 2,
-        "penetration": 0.65
-    },
-    "seats": {
-		1: { "userId": "",  "displayName": "" },
-		2: null,
-        3: { "userId": "", "displayName": "" },
-        4: null,
-        5: null,
-        6: { "userId": "dealer", "displayName": "" }
-    }
+  "round_id": "",
+  "shoe_id": "",
+  "type": "blackjack",
+  "rules": {
+    "deckCount": 2,
+    "penetration": 0.65
+  },
+  "seats": {
+    1: { "userId": "",  "displayName": "" },
+    2: null,
+    3: { "userId": "", "displayName": "" },
+    4: null,
+    5: null,
+    6: { "userId": "dealer", "displayName": "" }
+  }
 
 rounds/{roundId}
-    "gameId": "",
-    "shoeId": ""
-    "currentHandId": "",
-    "orderByHandId": [],
-    "status": "new" | "started" | "ended",
-    "dealerCard": ""
+  "gameId": "",
+  "shoeId": ""
+  "currentHandId": "",
+  "orderByHandId": [],
+  "status": "new" | "started" | "ended",
+  "dealerCard": ""
 
 hands/{handId}
-    "gameId": "",
-    "roundId": "",
-    "userId": "",
-    "visible": true,
-    "turn": true,
-    "seatNumber": 1,
-    "displayName": "",
-    "bet": 0,
-    "action": "hit" | "stand" | "bust",
-    "cards": []
+  "gameId": "",
+  "roundId": "",
+  "userId": "",
+  "visible": true,
+  "turn": true,
+  "seatNumber": 1,
+  "displayName": "",
+  "bet": 0,
+  "action": "hit" | "stand" | "bust",
+  "cards": []
 
 shoes/{shoeId}
-    "gameId": "",
-    "nextCard": 0,
-    "cards": {
-        0: "KH",
-        ...
-    }
+  "gameId": "",
+  "nextCard": 0,
+  "cards": {
+    0: "KH",
+    ...
+  }
 
-users/{userId}
+wallet/{walletId}
+  "userId": "",
 	"balance": 1000,
-    "games": {
-        "$gameId": true
-    },
-    "rounds": {
-        "$roundId": true
-    },
-    "hands": {
-        "$handId": true
-    },
-	public/info
-		"displayName": "Chris"
+  "games": {
+    "$gameId": true
+  },
+  "rounds": {
+    "$roundId": true
+  },
+  "hands": {
+    "$handId": true
+  },
 ```
 
 ### Rules
