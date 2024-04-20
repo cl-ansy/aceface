@@ -1,32 +1,44 @@
-import { useRef } from "react";
-import { Mesh } from "three";
-import { useFrame } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
+import { SpringValue, animated } from "@react-spring/three";
 
-export default function CardMesh({ name }: { name: string }) {
-  const meshRef = useRef<Mesh>(null!);
-
+export default function CardMesh({
+  name,
+  positionX,
+  positionY,
+  positionZ,
+  rotationX,
+  rotationZ,
+}: {
+  name: string;
+  positionX: SpringValue<number>;
+  positionY: SpringValue<number>;
+  positionZ: SpringValue<number>;
+  rotationX: SpringValue<number>;
+  rotationZ: SpringValue<number>;
+}) {
   const [cardTexture, backTexture] = useTexture([
     `/cards/vector/${name}.svg`,
     "/cards/vector/Back.svg",
   ]);
 
-  useFrame(({ clock }) => {
-    // console.log(clock.getElapsedTime() * 3);
-    // meshRef.current.rotation.y = clock.getElapsedTime();
-  });
-
   return (
-    <mesh ref={meshRef}>
+    <animated.mesh
+      position-x={positionX}
+      position-y={positionY}
+      position-z={positionZ}
+      rotation-x={rotationX}
+      rotation-z={rotationZ}
+    >
       <boxGeometry args={[250, 350, 0]} />
       {[null, null, null, null, cardTexture, backTexture].map((texture, i) => (
         <meshBasicMaterial
           key={i}
           attach={`material-${i}`}
           map={texture}
+          depthWrite={false}
           transparent
         />
       ))}
-    </mesh>
+    </animated.mesh>
   );
 }

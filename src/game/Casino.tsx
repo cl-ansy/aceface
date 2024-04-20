@@ -9,16 +9,17 @@ import BaseLighting from "@/game/Staging/BaseLighting";
 import TopDownControls from "@/game/Controls/TopDownControls";
 import TopDownCamera from "@/game/Cameras/TopDownCamera";
 import CardMesh from "@/game/Meshes/CardMesh";
+import Deck from "@/game/Deck";
 
 export default function CardShow() {
   return (
     <div id="canvas-container" className="w-screen h-screen">
-      <Canvas frameloop="demand" dpr={[1, 2]} linear flat>
+      <Canvas dpr={[1, 2]} linear flat>
         <TopDownCamera />
         <TopDownControls />
         <Suspense fallback={<LoadingProgress />}>
           <AssetLoader />
-          <CardMesh name="JD" />
+          <Deck />
         </Suspense>
         <BaseLighting />
       </Canvas>
