@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "deploy --only hosting --project aceface-49d4b --debug"
+    "deploy": "firebase deploy --only hosting --project aceface-49d4b --debug"
   },
   "dependencies": {
     "@react-spring/three": "^9.7.3",
