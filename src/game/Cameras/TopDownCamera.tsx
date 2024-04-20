@@ -6,8 +6,8 @@ export default function TopDownCamera({ children }: { children?: ReactNode }) {
     <OrthographicCamera
       zoom={0.4}
       near={0}
-      far={100}
-      position={[0, 0, 100]}
+      far={200}
+      position={[0, 0, 200]}
       makeDefault
     >
       {children}
