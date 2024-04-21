@@ -1,7 +1,9 @@
+import { TextureLoader } from "three";
+import { useLoader } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 
 export default function AssetLoader() {
-  useTexture([
+  useLoader.preload(TextureLoader, [
     "/cards/vector/2H.svg",
     "/cards/vector/3H.svg",
     "/cards/vector/4H.svg",
