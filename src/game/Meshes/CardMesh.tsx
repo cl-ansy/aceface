@@ -1,4 +1,4 @@
-import { RoundedBox, useTexture } from "@react-three/drei";
+import { useTexture } from "@react-three/drei";
 import { SpringValue, animated } from "@react-spring/three";
 import { ThreeEvent } from "@react-three/fiber";
 
