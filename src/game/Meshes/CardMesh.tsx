@@ -35,7 +35,8 @@ export default function CardMesh({
       rotation-x={rotationX}
       rotation-z={rotationZ}
     >
-      <boxGeometry args={[250, 350, 0]} />
+      {/* Cards should me 2.5:3.5 */}
+      <boxGeometry args={[100, 140, 0]} />
       {[null, null, null, null, cardTexture, backTexture].map((texture, i) => (
         <meshBasicMaterial
           key={i}

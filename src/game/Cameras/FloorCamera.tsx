@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { OrthographicCamera } from "@react-three/drei";
 
-export default function TopDownCamera({ children }: { children?: ReactNode }) {
+export default function FloorCamera({ children }: { children?: ReactNode }) {
   return (
     <OrthographicCamera
       zoom={0.4}

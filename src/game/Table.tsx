@@ -8,6 +8,7 @@ import { ThreeEvent } from "@react-three/fiber";
 
 const count = DECK.length;
 const startDelay = (n: number) => (count - n) * 100;
+const TABLEHEIGHT = 100;
 
 export default function Deck() {
   const isThrown = useRef(new Set());
@@ -15,9 +16,9 @@ export default function Deck() {
     count,
     (i) => ({
       from: {
-        positionX: 400,
+        positionX: 200,
         positionY: 0,
-        positionZ: i,
+        positionZ: i * 0.1 + TABLEHEIGHT,
         rotationX: Math.PI,
         rotationZ: 0,
       },
@@ -37,9 +38,9 @@ export default function Deck() {
       if (cardIdx !== springIdx) return; // only start animation for current spring
       return {
         to: {
-          positionX: -400 - Math.random() * 200,
-          positionY: (0.5 - Math.random()) * 200,
-          positionZ: count + (count - cardIdx),
+          positionX: -200 - Math.random() * 100,
+          positionY: (0.5 - Math.random()) * 100,
+          positionZ: (count + (count - cardIdx)) * 0.1 + TABLEHEIGHT,
           rotationX: 0,
           rotationZ: 0.5 - Math.random(),
         },
