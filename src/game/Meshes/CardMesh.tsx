@@ -1,30 +1,44 @@
+import { ThreeEvent, useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
-import { SpringValue, animated } from "@react-spring/three";
-import { ThreeEvent } from "@react-three/fiber";
+import {
+  useSpring,
+  SpringValues,
+  animated,
+  GoalValue,
+  ToProps,
+  SpringConfig,
+} from "@react-spring/three";
+
+type CardSpringValues = SpringValues<{
+  positionX?: number;
+  positionY?: number;
+  positionZ?: number;
+  rotationX?: number;
+  rotationZ?: number;
+}>;
+
+type CardSpring = {
+  from: GoalValue<CardSpringValues>;
+  to?: ToProps<CardSpringValues>;
+  config?: SpringConfig;
+};
 
 type CardMeshProps = {
   name: string;
+  spring: CardSpring;
   handleClick?: (event: ThreeEvent<MouseEvent>) => void;
-  positionX: SpringValue<number>;
-  positionY: SpringValue<number>;
-  positionZ: SpringValue<number>;
-  rotationX: SpringValue<number>;
-  rotationZ: SpringValue<number>;
 };
 
-export default function CardMesh({
-  name,
-  handleClick,
-  positionX,
-  positionY,
-  positionZ,
-  rotationX,
-  rotationZ,
-}: CardMeshProps) {
+export default function CardMesh({ name, spring, handleClick }: CardMeshProps) {
   const [cardTexture, backTexture] = useTexture([
     `/cards/vector/${name}.svg`,
     "/cards/vector/Back.svg",
   ]);
+  const { invalidate } = useThree();
+  const { positionX, positionY, positionZ, rotationX, rotationZ } = useSpring({
+    ...spring,
+    // onChange: () => invalidate(),
+  });
 
   // Cards should me 2.5:3.5
   return (
@@ -36,7 +50,7 @@ export default function CardMesh({
       rotation-x={rotationX}
       rotation-z={rotationZ}
     >
-      <boxGeometry args={[100, 140, 0]} />
+      <boxGeometry args={[100, 140, 0.1]} />
       {[null, null, null, null, cardTexture, backTexture].map((texture, i) => (
         <meshBasicMaterial
           key={i}

@@ -22,6 +22,23 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 GitHub workflows are setup to auto deploy on merge/push to `main` branch.
 
+## TODO
+
+### Current
+
+- [x] Move springs to card. Pass to and from as props
+- [ ] Onclick deck, generate card
+- [ ] Reuse textures/meshes
+- [ ] Optimize asset loading / network requests
+
+### Stretch
+
+- [ ] Stats
+- [ ] Chat
+- [ ] Private tables
+- [ ] Custom draw animations
+- [ ] Card counting trainer
+
 ## Neobrutalism theme
 
 https://neobrutalism-components.vercel.app/docs
