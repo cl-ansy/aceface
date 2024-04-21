@@ -28,6 +28,7 @@ GitHub workflows are setup to auto deploy on merge/push to `main` branch.
 
 - [x] Move springs to card. Pass to and from as props
 - [x] Onclick deck, generate card
+- [x] Preload textures
 - [ ] Use frameloop="demand" and manually invalidate springs
 - [ ] Optimize asset loading / network requests
 

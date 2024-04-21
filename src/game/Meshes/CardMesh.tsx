@@ -31,10 +31,9 @@ type CardMeshProps = {
 };
 
 export default function CardMesh({ name, spring, handleClick }: CardMeshProps) {
-  const [cardTexture, backTexture] = useTexture([
-    `/cards/vector/${name}.svg`,
-    "/cards/vector/Back.svg",
-  ]);
+  const cardTexture = useTexture(`/cards/vector/${name}.svg`);
+  const backTexture = useTexture("/cards/vector/Back.svg");
+
   const { invalidate } = useThree();
   const { positionX, positionY, positionZ, rotationX, rotationZ } = useSpring({
     ...spring,

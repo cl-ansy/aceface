@@ -2,7 +2,7 @@
 
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Preload, Stats } from "@react-three/drei";
+import { Stats } from "@react-three/drei";
 
 import "@/game/Loaders/AssetLoader";
 import LoadingProgress from "@/game/Loaders/LoadingProgress";
@@ -25,7 +25,6 @@ export default function CardShow() {
         <TableControls />
         <Suspense fallback={<LoadingProgress />}>
           <Table />
-          <Preload all />
         </Suspense>
         <BaseLighting />
         <Stats />
