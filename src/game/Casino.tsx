@@ -2,6 +2,7 @@
 
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
+import { Stats } from "@react-three/drei";
 
 import AssetLoader from "@/game/Loaders/AssetLoader";
 import LoadingProgress from "@/game/Loaders/LoadingProgress";
@@ -21,6 +22,7 @@ export default function CardShow() {
           <Table />
         </Suspense>
         <BaseLighting />
+        <Stats />
       </Canvas>
     </div>
   );

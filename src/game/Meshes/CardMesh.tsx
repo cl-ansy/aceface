@@ -1,4 +1,4 @@
-import { useTexture } from "@react-three/drei";
+import { RoundedBox, useTexture } from "@react-three/drei";
 import { SpringValue, animated } from "@react-spring/three";
 import { ThreeEvent } from "@react-three/fiber";
 
@@ -26,6 +26,7 @@ export default function CardMesh({
     "/cards/vector/Back.svg",
   ]);
 
+  // Cards should me 2.5:3.5
   return (
     <animated.mesh
       onClick={handleClick}
@@ -35,7 +36,6 @@ export default function CardMesh({
       rotation-x={rotationX}
       rotation-z={rotationZ}
     >
-      {/* Cards should me 2.5:3.5 */}
       <boxGeometry args={[100, 140, 0]} />
       {[null, null, null, null, cardTexture, backTexture].map((texture, i) => (
         <meshBasicMaterial

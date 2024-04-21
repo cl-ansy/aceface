@@ -16,8 +16,8 @@ export default function Deck() {
     count,
     (i) => ({
       from: {
-        positionX: 200,
-        positionY: 0,
+        positionX: 300,
+        positionY: 200,
         positionZ: i * 0.1 + TABLEHEIGHT,
         rotationX: Math.PI,
         rotationZ: 0,
@@ -38,8 +38,8 @@ export default function Deck() {
       if (cardIdx !== springIdx) return; // only start animation for current spring
       return {
         to: {
-          positionX: -200 - Math.random() * 100,
-          positionY: (0.5 - Math.random()) * 100,
+          positionX: (0.5 - Math.random()) * 100,
+          positionY: -200 - Math.random() * 100,
           positionZ: (count + (count - cardIdx)) * 0.1 + TABLEHEIGHT,
           rotationX: 0,
           rotationZ: 0.5 - Math.random(),
