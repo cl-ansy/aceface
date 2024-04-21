@@ -1,62 +1,55 @@
-import { TextureLoader } from "three";
-import { useLoader } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 
-export default function AssetLoader() {
-  useLoader.preload(TextureLoader, [
-    "/cards/vector/2H.svg",
-    "/cards/vector/3H.svg",
-    "/cards/vector/4H.svg",
-    "/cards/vector/5H.svg",
-    "/cards/vector/6H.svg",
-    "/cards/vector/7H.svg",
-    "/cards/vector/8H.svg",
-    "/cards/vector/9H.svg",
-    "/cards/vector/TH.svg",
-    "/cards/vector/JH.svg",
-    "/cards/vector/QH.svg",
-    "/cards/vector/KH.svg",
-    "/cards/vector/AH.svg",
-    "/cards/vector/2S.svg",
-    "/cards/vector/3S.svg",
-    "/cards/vector/4S.svg",
-    "/cards/vector/5S.svg",
-    "/cards/vector/6S.svg",
-    "/cards/vector/7S.svg",
-    "/cards/vector/8S.svg",
-    "/cards/vector/9S.svg",
-    "/cards/vector/TS.svg",
-    "/cards/vector/JS.svg",
-    "/cards/vector/QS.svg",
-    "/cards/vector/KS.svg",
-    "/cards/vector/AS.svg",
-    "/cards/vector/2C.svg",
-    "/cards/vector/3C.svg",
-    "/cards/vector/4C.svg",
-    "/cards/vector/5C.svg",
-    "/cards/vector/6C.svg",
-    "/cards/vector/7C.svg",
-    "/cards/vector/8C.svg",
-    "/cards/vector/9C.svg",
-    "/cards/vector/TC.svg",
-    "/cards/vector/JC.svg",
-    "/cards/vector/QC.svg",
-    "/cards/vector/KC.svg",
-    "/cards/vector/AC.svg",
-    "/cards/vector/2D.svg",
-    "/cards/vector/3D.svg",
-    "/cards/vector/4D.svg",
-    "/cards/vector/5D.svg",
-    "/cards/vector/6D.svg",
-    "/cards/vector/7D.svg",
-    "/cards/vector/8D.svg",
-    "/cards/vector/9D.svg",
-    "/cards/vector/TD.svg",
-    "/cards/vector/JD.svg",
-    "/cards/vector/QD.svg",
-    "/cards/vector/KD.svg",
-    "/cards/vector/AD.svg",
-    "/cards/vector/Back.svg",
-  ]);
-  return null;
-}
+useTexture.preload("/cards/vector/2H.svg");
+useTexture.preload("/cards/vector/3H.svg");
+useTexture.preload("/cards/vector/4H.svg");
+useTexture.preload("/cards/vector/5H.svg");
+useTexture.preload("/cards/vector/6H.svg");
+useTexture.preload("/cards/vector/7H.svg");
+useTexture.preload("/cards/vector/8H.svg");
+useTexture.preload("/cards/vector/9H.svg");
+useTexture.preload("/cards/vector/TH.svg");
+useTexture.preload("/cards/vector/JH.svg");
+useTexture.preload("/cards/vector/QH.svg");
+useTexture.preload("/cards/vector/KH.svg");
+useTexture.preload("/cards/vector/AH.svg");
+useTexture.preload("/cards/vector/2S.svg");
+useTexture.preload("/cards/vector/3S.svg");
+useTexture.preload("/cards/vector/4S.svg");
+useTexture.preload("/cards/vector/5S.svg");
+useTexture.preload("/cards/vector/6S.svg");
+useTexture.preload("/cards/vector/7S.svg");
+useTexture.preload("/cards/vector/8S.svg");
+useTexture.preload("/cards/vector/9S.svg");
+useTexture.preload("/cards/vector/TS.svg");
+useTexture.preload("/cards/vector/JS.svg");
+useTexture.preload("/cards/vector/QS.svg");
+useTexture.preload("/cards/vector/KS.svg");
+useTexture.preload("/cards/vector/AS.svg");
+useTexture.preload("/cards/vector/2C.svg");
+useTexture.preload("/cards/vector/3C.svg");
+useTexture.preload("/cards/vector/4C.svg");
+useTexture.preload("/cards/vector/5C.svg");
+useTexture.preload("/cards/vector/6C.svg");
+useTexture.preload("/cards/vector/7C.svg");
+useTexture.preload("/cards/vector/8C.svg");
+useTexture.preload("/cards/vector/9C.svg");
+useTexture.preload("/cards/vector/TC.svg");
+useTexture.preload("/cards/vector/JC.svg");
+useTexture.preload("/cards/vector/QC.svg");
+useTexture.preload("/cards/vector/KC.svg");
+useTexture.preload("/cards/vector/AC.svg");
+useTexture.preload("/cards/vector/2D.svg");
+useTexture.preload("/cards/vector/3D.svg");
+useTexture.preload("/cards/vector/4D.svg");
+useTexture.preload("/cards/vector/5D.svg");
+useTexture.preload("/cards/vector/6D.svg");
+useTexture.preload("/cards/vector/7D.svg");
+useTexture.preload("/cards/vector/8D.svg");
+useTexture.preload("/cards/vector/9D.svg");
+useTexture.preload("/cards/vector/TD.svg");
+useTexture.preload("/cards/vector/JD.svg");
+useTexture.preload("/cards/vector/QD.svg");
+useTexture.preload("/cards/vector/KD.svg");
+useTexture.preload("/cards/vector/AD.svg");
+useTexture.preload("/cards/vector/Back.svg");

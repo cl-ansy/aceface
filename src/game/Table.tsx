@@ -45,6 +45,7 @@ export default function Deck() {
   const onDeckClick = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
     const randomCard = Math.floor(Math.random() * (DECK.length - 1));
+    // const randomCard = Math.floor(Math.random() * 4);
     setCards([...cards, DECK[randomCard]]);
   };
 

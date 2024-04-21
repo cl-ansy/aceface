@@ -1,3 +1,4 @@
+import "@/game/Loaders/AssetLoader";
 import { ThreeEvent, useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import {
