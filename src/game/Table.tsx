@@ -1,16 +1,17 @@
-import { SyntheticEvent, useRef } from "react";
+import { useRef } from "react";
+import { useThree } from "@react-three/fiber";
 import { useSprings } from "@react-spring/three";
 
 import CardMesh from "@/game/Meshes/CardMesh";
 
 import { DECK } from "@/lib/constants";
-import { ThreeEvent } from "@react-three/fiber";
 
 const count = DECK.length;
 const startDelay = (n: number) => (count - n) * 100;
 const TABLEHEIGHT = 100;
 
 export default function Deck() {
+  const { invalidate } = useThree();
   const isThrown = useRef(new Set());
   const [springs, api] = useSprings(
     count,
@@ -19,12 +20,15 @@ export default function Deck() {
         positionX: 300,
         positionY: 200,
         positionZ: i * 0.1 + TABLEHEIGHT,
-        rotationX: Math.PI,
+        rotationX: -Math.PI,
         rotationZ: 0,
       },
       config: {
         tension: 150,
         friction: 29,
+      },
+      onChange: () => {
+        // invalidate();
       },
     }),
     []
@@ -41,11 +45,11 @@ export default function Deck() {
           positionX: (0.5 - Math.random()) * 100,
           positionY: -200 - Math.random() * 100,
           positionZ: (count + (count - cardIdx)) * 0.1 + TABLEHEIGHT,
-          rotationX: 0,
+          rotationX: 2 * Math.PI,
           rotationZ: 0.5 - Math.random(),
         },
         immediate: (key) => {
-          return ["positionZ", "rotationX"].includes(key);
+          return ["positionZ"].includes(key);
         },
       };
     });

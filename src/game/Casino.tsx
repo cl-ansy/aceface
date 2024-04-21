@@ -14,7 +14,13 @@ import Table from "@/game/Table";
 export default function CardShow() {
   return (
     <div id="canvas-container" className="w-screen h-screen">
-      <Canvas dpr={[1, 2]} linear flat>
+      <Canvas
+        // frameloop="demand"
+        dpr={[1, 2]}
+        gl={{ antialias: true, alpha: false }}
+        flat
+      >
+        <color attach="background" args={["#daf5f0"]} />
         <TableCamera />
         <TableControls />
         <Suspense fallback={<LoadingProgress />}>
