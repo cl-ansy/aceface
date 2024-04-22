@@ -1,5 +1,5 @@
-import Alert from "@/components/Alert";
+import Casino from "@/game/Casino";
 
 export default function Page() {
-  return <Alert message="Coming Soon!" />;
+  return <Casino />;
 }
