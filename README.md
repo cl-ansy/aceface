@@ -28,13 +28,16 @@ The Firebase app will only allow connections from production domains. To test, a
 
 ## TODO
 
-### Current
+### Tasks
 
 - [x] Move springs to card. Pass to and from as props
 - [x] Onclick deck, generate card
 - [x] Preload textures
 - [ ] tunnel-rat for buttons/actions
-- [ ] Use frameloop="demand" and manually invalidate springs
+
+### Performance
+
+- [x] Use frameloop="demand" and manually invalidate springs
 - [ ] Optimize asset loading / network requests
 
 ### Stretch
