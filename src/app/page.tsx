@@ -1,4 +1,4 @@
-import Casino from "@/game/Casino";
+import Casino from "@/game/Scenes/Casino";
 
 export default function Page() {
   return <Casino />;

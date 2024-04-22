@@ -7,7 +7,7 @@ import { DECK } from "@/lib/constants";
 
 const TABLEHEIGHT = 100;
 
-export default function Deck() {
+export default function Table() {
   const springs = useRef<any>({});
   const [cards, setCards] = useState<string[]>([]);
 

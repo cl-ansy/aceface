@@ -9,7 +9,7 @@ import LoadingProgress from "@/game/Loaders/LoadingProgress";
 import BaseLighting from "@/game/Staging/BaseLighting";
 import TableCamera from "@/game/Cameras/TableCamera";
 import TableControls from "@/game/Controls/TableControls";
-import Table from "@/game/Table";
+import TableView from "@/game/Views/TableView";
 
 export default function CardShow() {
   return (
@@ -24,7 +24,7 @@ export default function CardShow() {
         <TableCamera />
         <TableControls />
         <Suspense fallback={<LoadingProgress />}>
-          <Table />
+          <TableView />
         </Suspense>
         <BaseLighting />
         <Stats />
