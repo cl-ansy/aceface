@@ -15,7 +15,7 @@ export default function CardShow() {
   return (
     <div id="canvas-container" className="w-screen h-screen">
       <Canvas
-        // frameloop="demand"
+        frameloop="demand"
         dpr={[1, 2]}
         gl={{ antialias: true, alpha: false }}
         flat

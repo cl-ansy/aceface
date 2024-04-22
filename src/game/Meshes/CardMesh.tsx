@@ -1,5 +1,6 @@
 import "@/game/Loaders/AssetLoader";
-import { ThreeEvent, useThree } from "@react-three/fiber";
+import { useRef } from "react";
+import { ThreeEvent, useFrame, useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import {
   useSpring,
@@ -31,14 +32,26 @@ type CardMeshProps = {
 };
 
 export default function CardMesh({ name, spring, handleClick }: CardMeshProps) {
+  const isAnimating = useRef(false);
   const cardTexture = useTexture(`/cards/vector/${name}.svg`);
   const backTexture = useTexture("/cards/vector/Back.svg");
-
   const { invalidate } = useThree();
+
   const { positionX, positionY, positionZ, rotationX, rotationZ } = useSpring({
     ...spring,
-    // onChange: () => invalidate(),
+    config: {
+      precision: 0.0001,
+      ...spring.config,
+    },
+    onStart: () => {
+      isAnimating.current = true;
+    },
+    onRest: () => {
+      isAnimating.current = false;
+    },
   });
+
+  useFrame(() => isAnimating.current && invalidate());
 
   // Cards should me 2.5:3.5
   return (
