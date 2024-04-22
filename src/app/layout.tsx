@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import Init from "@/components/Init";
+import Init from "@/lib/firebase/Init";
 import Navbar from "@/components/Navbar";
 
 import "@/styles/globals.css";
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-bg color-main">
       <body className={inter.className}>
-        {/* <Init /> */}
+        <Init />
         <Navbar />
 
         <main className="min-h-screen">{children}</main>

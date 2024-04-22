@@ -22,6 +22,10 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 GitHub workflows are setup to auto deploy on merge/push to `main` branch.
 
+## Firebase
+
+The Firebase app will only allow connections from production domains. To test, add Firebase Testing env variables to `.env.development`.
+
 ## TODO
 
 ### Current

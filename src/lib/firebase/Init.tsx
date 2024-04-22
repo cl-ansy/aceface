@@ -3,18 +3,16 @@
 import { useEffect } from "react";
 
 import { useUserStore } from "@/state/userStore";
+import { signInAnonymously } from "@/lib/firebase/auth";
 
 export default function Header() {
   const subscribe = useUserStore((state) => state.subscribe);
-  const signInAnonymously = useUserStore((state) => state.signInAnonymously);
 
   useEffect(() => {
     const unsubscribe = subscribe();
-
     signInAnonymously();
-
     return () => unsubscribe();
-  }, [subscribe, signInAnonymously]);
+  }, [subscribe]);
 
   return <></>;
 }

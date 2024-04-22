@@ -1,9 +1,6 @@
 import { create } from "zustand";
 
-import {
-  onAuthStateChanged,
-  signInAnonymously as _signInAnonymously,
-} from "@/lib/firebase/auth";
+import { onAuthStateChanged } from "@/lib/firebase/auth";
 
 export interface User {
   uid: string;
@@ -12,7 +9,6 @@ export interface User {
 interface UserState {
   user: User | null;
   subscribe: () => () => void;
-  signInAnonymously: () => void;
 }
 
 export const useUserStore = create<UserState>((set) => ({
@@ -23,5 +19,4 @@ export const useUserStore = create<UserState>((set) => ({
     onAuthStateChanged((user) => {
       set({ user: user });
     }),
-  signInAnonymously: () => _signInAnonymously(),
 }));
