@@ -23,8 +23,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Init />
         <Navbar />
-
-        <main className="min-h-screen">{children}</main>
+        <main className="h-screen">{children}</main>
       </body>
     </html>
   );
