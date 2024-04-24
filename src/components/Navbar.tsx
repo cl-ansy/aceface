@@ -9,7 +9,7 @@ import { getWalletByUserId } from "@/lib/firebase/firestore";
 import Avatar from "@/components/Avatar";
 import Button from "@/components/Button";
 
-import authAtom from "@/state/auth-atom";
+import { authAtom } from "@/state/atoms";
 
 function Navbar() {
   const [user] = useAtom(authAtom);

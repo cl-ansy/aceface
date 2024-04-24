@@ -3,10 +3,7 @@ import { User } from "firebase/auth";
 
 import { onAuthStateChanged } from "@/lib/firebase/auth";
 
-const walletAtom = atom({ balance: 0 });
-
-const authAtom = atom<User | null>(null);
-
+export const authAtom = atom<User | null>(null);
 authAtom.onMount = (setAtom) => {
   const unsubscribe = onAuthStateChanged((user) => {
     setAtom(user);
@@ -15,4 +12,4 @@ authAtom.onMount = (setAtom) => {
   return () => unsubscribe();
 };
 
-export default authAtom;
+export const walletAtom = atom({ balance: 0 });

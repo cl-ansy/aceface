@@ -6,7 +6,7 @@ import { Canvas } from "@react-three/fiber";
 import { Stats } from "@react-three/drei";
 
 import "@/game/Loaders/AssetLoader";
-import authAtom from "@/state/auth-atom";
+import { authAtom } from "@/state/atoms";
 import LoadingProgress from "@/game/Loaders/LoadingProgress";
 import BaseLighting from "@/game/Staging/BaseLighting";
 import TableCamera from "@/game/Cameras/TableCamera";

@@ -2,6 +2,7 @@ import { type Metadata } from "next";
 import { Provider } from "jotai";
 import { Inter } from "next/font/google";
 
+import AtomStoreProvider from "@/state/AtomStoreProvider";
 import Navbar from "@/components/Navbar";
 
 import "@/styles/globals.css";
@@ -25,10 +26,10 @@ export default function RootLayout({
           Do not remove this Provider. It is important to store jotai state here instead of an
           implicit global store ("provider-less" mode) so that NextJS won't share state across requests.
         */}
-        <Provider>
+        <AtomStoreProvider>
           <Navbar />
           <main className="h-screen">{children}</main>
-        </Provider>
+        </AtomStoreProvider>
       </body>
     </html>
   );
