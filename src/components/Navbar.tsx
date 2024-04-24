@@ -5,16 +5,16 @@ import { useAtomValue } from "jotai";
 import { AiOutlineUser } from "react-icons/ai";
 
 import { signInAnonymously } from "@/lib/firebase/auth";
-// import { getWalletByUserId } from "@/lib/firebase/firestore";
 import Avatar from "@/components/Avatar";
+import Badge from "@/components/Badge";
 import Button from "@/components/Button";
 
-import { authPendingAtom, displayNameAtom, userUidAtom } from "@/state/atoms";
+import { authPendingAtom, balanceAtom, userUidAtom } from "@/state/atoms";
 
 function Navbar() {
   const isAuthPending = useAtomValue(authPendingAtom);
-  const displayName = useAtomValue(displayNameAtom);
   const userUid = useAtomValue(userUidAtom);
+  const balance = useAtomValue(balanceAtom);
 
   const handleLoginClick = () => {
     signInAnonymously();
@@ -30,7 +30,9 @@ function Navbar() {
         </div>
 
         <div className="flex items-center gap-10 m700:hidden"></div>
+
         <div className="flex items-center justify-end gap-2">
+          <Badge text={String(balance)} />
           {!isAuthPending && userUid && (
             <Avatar>
               <AiOutlineUser className="h-8 w-8" />
