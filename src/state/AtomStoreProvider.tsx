@@ -1,16 +1,44 @@
 "use client";
 
-import { ReactNode } from "react";
-import { Provider, createStore } from "jotai";
+import { type ReactNode, useEffect } from "react";
+import { Provider, createStore, useSetAtom } from "jotai";
+
+import { onAuthStateChanged } from "@/lib/firebase/auth";
+import { atomStore, authAtom, authPendingAtom } from "@/state/atoms";
 
 type AtomStoreProviderProps = {
   children: ReactNode;
 };
 
-export const atomStore = createStore();
+const useAuthSub = () => {
+  const setAuth = useSetAtom(authAtom);
+  const setAuthPending = useSetAtom(authPendingAtom);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged((user) => {
+      console.log("auth state change ", user);
+      setAuth(user);
+      setAuthPending(false);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [setAuth, setAuthPending]);
+};
+
+function FirebaseSubs() {
+  useAuthSub();
+  return null;
+}
 
 export default function AtomStoreProvider({
   children,
 }: AtomStoreProviderProps) {
-  return <Provider store={atomStore}>{children}</Provider>;
+  return (
+    <Provider store={atomStore}>
+      <FirebaseSubs />
+      {children}
+    </Provider>
+  );
 }
