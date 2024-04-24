@@ -1,10 +1,12 @@
 "use client";
 
 import { Suspense } from "react";
+import { useAtom } from "jotai";
 import { Canvas } from "@react-three/fiber";
 import { Stats } from "@react-three/drei";
 
 import "@/game/Loaders/AssetLoader";
+import authAtom from "@/state/auth-atom";
 import LoadingProgress from "@/game/Loaders/LoadingProgress";
 import BaseLighting from "@/game/Staging/BaseLighting";
 import TableCamera from "@/game/Cameras/TableCamera";
@@ -12,6 +14,8 @@ import TableControls from "@/game/Controls/TableControls";
 import TableView from "@/game/Views/TableView";
 
 export default function CardShow() {
+  useAtom(authAtom);
+
   return (
     <div id="canvas-container" className="w-screen h-screen">
       <Canvas

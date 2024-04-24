@@ -5,11 +5,11 @@ import {
 
 import { auth } from "@/lib/firebase/firebase";
 
-type User = {
+export type User = {
   uid: string;
-};
+} | null;
 
-export function onAuthStateChanged(cb: (user: User | null) => void) {
+export function onAuthStateChanged(cb: (user: User) => void) {
   return _onAuthStateChanged(auth, cb);
 }
 

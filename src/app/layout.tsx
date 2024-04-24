@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+import { type Metadata } from "next";
+import { Provider } from "jotai";
 import { Inter } from "next/font/google";
 
-import Init from "@/lib/firebase/Init";
 import Navbar from "@/components/Navbar";
 
 import "@/styles/globals.css";
@@ -21,9 +21,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-bg color-main">
       <body className={inter.className}>
-        <Init />
-        <Navbar />
-        <main className="h-screen">{children}</main>
+        {/*
+          Do not remove this Provider. It is important to store jotai state here instead of an
+          implicit global store ("provider-less" mode) so that NextJS won't share state across requests.
+        */}
+        <Provider>
+          <Navbar />
+          <main className="h-screen">{children}</main>
+        </Provider>
       </body>
     </html>
   );
