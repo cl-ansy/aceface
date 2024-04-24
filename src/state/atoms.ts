@@ -4,6 +4,7 @@ import { User } from "firebase/auth";
 
 import { atomStore } from "@/state/AtomStoreProvider";
 import { onAuthStateChanged } from "@/lib/firebase/auth";
+import { type Wallet, getWalletByUserId } from "@/lib/firebase/firestore";
 
 // Auth
 export const authPendingAtom = atom(true);
@@ -25,3 +26,16 @@ export const walletAtom = atom({ balance: 0 });
 export const balanceAtom = focusAtom(walletAtom, (optic) =>
   optic.prop("balance")
 );
+
+// Subscribers
+atomStore.sub(userUidAtom, () => {
+  const userUid = atomStore.get(userUidAtom);
+
+  const setBalance = (wallet: Wallet) => {
+    // atomStore.set(balanceAtom, balance);
+  };
+
+  const unsub = getWalletByUserId(userUid || "", setBalance);
+
+  return () => unsub();
+});

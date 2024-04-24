@@ -1,6 +1,7 @@
 import {
   collection,
   getDocs,
+  doc,
   onSnapshot,
   query,
   where,
@@ -15,16 +16,27 @@ export const getGames = async () => {
   });
 };
 
-export const getWalletByUserId = (userUid: string) => {
-  const userWalletQuery = query(
-    collection(firestore, "wallets"),
-    where("userUid", "==", userUid)
-  );
-  const unsubscribe = onSnapshot(userWalletQuery, (querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      console.log(doc.data());
-    });
+export type Wallet = {
+  balance: number;
+  userUid: string;
+};
+
+export const getWalletByUserId = (
+  userUid: string,
+  setter: (wallet: Wallet) => void
+) => {
+  // const userWalletQuery = query(
+  //   collection(firestore, "wallets"),
+  //   where("userUid", "==", userUid)
+  // );
+  // const unsubscribe = onSnapshot(userWalletQuery, (querySnapshot) => {
+  //   querySnapshot.forEach((doc) => {
+  //     console.log(doc.data());
+  //   });
+  // });
+  const unsub = onSnapshot(doc(firestore, "wallets", userUid), (doc) => {
+    console.log("Current data: ", doc.data());
   });
 
-  return unsubscribe;
+  return unsub;
 };

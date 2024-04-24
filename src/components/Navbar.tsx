@@ -32,20 +32,20 @@ function Navbar() {
         <div className="flex items-center gap-10 m700:hidden"></div>
 
         <div className="flex items-center justify-end gap-2">
-          <Badge text={String(balance)} />
+          {userUid && <Badge text={String(balance)} />}
           {!isAuthPending && userUid && (
             <Avatar>
               <AiOutlineUser className="h-8 w-8" />
             </Avatar>
           )}
-          {!isAuthPending && !userUid && (
+          {/* {!isAuthPending && !userUid && (
             <Button
               onClick={handleLoginClick}
               className="flex items-center justify-center rounded-base border-2 border-black p-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none"
             >
               Log In
             </Button>
-          )}
+          )} */}
         </div>
       </div>
     </nav>

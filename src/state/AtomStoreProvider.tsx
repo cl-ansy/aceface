@@ -3,8 +3,6 @@
 import { ReactNode } from "react";
 import { Provider, createStore } from "jotai";
 
-import { authAtom } from "@/state/atoms";
-
 type AtomStoreProviderProps = {
   children: ReactNode;
 };
