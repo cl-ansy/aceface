@@ -9,7 +9,7 @@ type AtomStoreProviderProps = {
   children: ReactNode;
 };
 
-const atomStore = createStore();
+export const atomStore = createStore();
 
 export default function AtomStoreProvider({
   children,

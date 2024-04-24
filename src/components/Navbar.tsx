@@ -1,26 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
-import { useAtom } from "jotai";
+import { useAtomValue } from "jotai";
+import { AiOutlineUser } from "react-icons/ai";
 
 import { signInAnonymously } from "@/lib/firebase/auth";
 // import { getWalletByUserId } from "@/lib/firebase/firestore";
 import Avatar from "@/components/Avatar";
 import Button from "@/components/Button";
 
-import { displayNameAtom, userUidAtom } from "@/state/atoms";
+import { authPendingAtom, displayNameAtom, userUidAtom } from "@/state/atoms";
 
 function Navbar() {
-  const [displayName] = useAtom(displayNameAtom);
-  const [userUid] = useAtom(userUidAtom);
-
-  // useEffect(() => {
-  //   if (user && user.uid) {
-  //     const unsubscribe = getWalletByUserId(user.uid);
-  //     return () => unsubscribe();
-  //   }
-  // }, [user]);
+  const isAuthPending = useAtomValue(authPendingAtom);
+  const displayName = useAtomValue(displayNameAtom);
+  const userUid = useAtomValue(userUidAtom);
 
   const handleLoginClick = () => {
     signInAnonymously();
@@ -37,12 +31,12 @@ function Navbar() {
 
         <div className="flex items-center gap-10 m700:hidden"></div>
         <div className="flex items-center justify-end gap-2">
-          {userUid ? (
-            <>
-              <Avatar />
-              <p>{displayName}</p>
-            </>
-          ) : (
+          {!isAuthPending && userUid && (
+            <Avatar>
+              <AiOutlineUser className="h-8 w-8" />
+            </Avatar>
+          )}
+          {!isAuthPending && !userUid && (
             <Button
               onClick={handleLoginClick}
               className="flex items-center justify-center rounded-base border-2 border-black p-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none"

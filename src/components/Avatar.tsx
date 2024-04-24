@@ -1,25 +1,28 @@
 import { ClassValue } from "clsx";
 
 import { cn } from "@/lib/utils";
+import { ReactNode } from "react";
 
 export default function Avatar({
+  children,
   className,
-}: // imageUrl,
-{
+  imageUrl,
+}: {
+  children?: ReactNode;
   className?: ClassValue;
-  // imageUrl: string;
+  imageUrl?: string;
 }) {
   return (
     <div
-      style={
-        {
-          // backgroundImage: `url(${imageUrl})`,
-        }
-      }
+      style={{
+        backgroundImage: cn({ [`url(${imageUrl})`]: false }),
+      }}
       className={cn(
-        "h-8 w-8 rounded-full border-2 border-black bg-main bg-cover bg-center",
+        "flex justify-center items-center h-8 w-8 rounded-full border-2 border-black bg-mainAccent bg-cover bg-center",
         className
       )}
-    ></div>
+    >
+      {children}
+    </div>
   );
 }
