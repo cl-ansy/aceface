@@ -16,7 +16,6 @@ const useAuthSub = () => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged((user) => {
-      console.log("auth state change ", user);
       setAuth(user);
       setAuthPending(false);
     });

@@ -2,9 +2,13 @@ import { atom, createStore } from "jotai";
 import { focusAtom } from "jotai-optics";
 import { User } from "firebase/auth";
 
-// import { atomStore } from "@/state/AtomStoreProvider";
-import { onAuthStateChanged } from "@/lib/firebase/auth";
-import { type Wallet, getWalletByUserId } from "@/lib/firebase/firestore";
+import { getWalletByUserId } from "@/lib/firebase/firestore";
+import { DocumentData } from "firebase/firestore";
+
+export type Wallet = {
+  balance: number;
+  userUid: string;
+};
 
 export const atomStore = createStore();
 
@@ -18,7 +22,7 @@ export const displayNameAtom = atom(
 );
 
 // Wallet
-export const walletAtom = atom({ balance: 0 });
+export const walletAtom = atom({ userUid: undefined, balance: undefined });
 export const balanceAtom = focusAtom(walletAtom, (optic) =>
   optic.prop("balance")
 );
@@ -26,8 +30,11 @@ export const balanceAtom = focusAtom(walletAtom, (optic) =>
 // Subscribers
 atomStore.sub(userUidAtom, () => {
   const userUid = atomStore.get(userUidAtom);
-  const setBalance = (wallet: Wallet) => {
-    // atomStore.set(balanceAtom, balance);
+  const setBalance = (data: DocumentData | undefined) => {
+    atomStore.set(walletAtom, {
+      userUid: data && data.userUid,
+      balance: data && data.balance,
+    });
   };
   const unsub = getWalletByUserId(userUid || "", setBalance);
   return () => unsub();
