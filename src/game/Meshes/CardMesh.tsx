@@ -1,5 +1,6 @@
 import "@/game/Loaders/AssetLoader";
 import { useRef } from "react";
+import { useAtom } from "jotai";
 import { ThreeEvent, useFrame, useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import {
@@ -10,6 +11,7 @@ import {
   ToProps,
   SpringConfig,
 } from "@react-spring/three";
+import { PrimitiveAtom } from "jotai";
 
 type CardSpringValues = SpringValues<{
   positionX?: number;
@@ -26,17 +28,19 @@ type CardSpring = {
 };
 
 type CardMeshProps = {
-  name: string;
+  card: PrimitiveAtom<string>;
   spring: CardSpring;
   handleClick?: (event: ThreeEvent<MouseEvent>) => void;
 };
 
-export default function CardMesh({ name, spring, handleClick }: CardMeshProps) {
+export default function CardMesh({ card, spring, handleClick }: CardMeshProps) {
   const isAnimating = useRef(false);
-  const cardTexture = useTexture(`/cards/vector/${name}.svg`);
+  const [cardName] = useAtom(card);
+  const cardTexture = useTexture(`/cards/vector/${cardName}.svg`);
   const backTexture = useTexture("/cards/vector/Back.svg");
   const { invalidate } = useThree();
 
+  console.log("render");
   const { positionX, positionY, positionZ, rotationX, rotationZ } = useSpring({
     ...spring,
     config: {

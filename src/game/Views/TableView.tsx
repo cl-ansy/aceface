@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { atom, useAtom, PrimitiveAtom } from "jotai";
 import { ThreeEvent } from "@react-three/fiber";
 
 import CardMesh from "@/game/Meshes/CardMesh";
@@ -7,9 +8,11 @@ import { DECK } from "@/lib/constants";
 
 const TABLEHEIGHT = 100;
 
+const backAtom = atom("Back");
+
 export default function Table() {
   const springs = useRef<any>({});
-  const [cards, setCards] = useState<string[]>([]);
+  const [cards, setCards] = useState<PrimitiveAtom<string>[]>([]);
 
   const getSpring = (cardIdx: number) => {
     if (springs.current[cardIdx]) return springs.current[cardIdx];
@@ -45,14 +48,19 @@ export default function Table() {
   const onDeckClick = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
     const randomCard = Math.floor(Math.random() * (DECK.length - 1));
-    setCards([...cards, DECK[randomCard]]);
+    const card = atom<string>(DECK[randomCard]);
+    setCards([...cards, card]);
   };
 
   return (
     <>
-      <CardMesh name="Back" spring={getSpring(-1)} handleClick={onDeckClick} />
+      <CardMesh
+        card={backAtom}
+        spring={getSpring(-1)}
+        handleClick={onDeckClick}
+      />
       {cards.map((card, i) => (
-        <CardMesh key={i} name={card} spring={getSpring(i)} />
+        <CardMesh key={i} card={card} spring={getSpring(i)} />
       ))}
     </>
   );
