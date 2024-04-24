@@ -1,15 +1,13 @@
 import {
+  NextOrObserver,
+  User,
   onAuthStateChanged as _onAuthStateChanged,
   signInAnonymously as _signInAnonymously,
 } from "firebase/auth";
 
 import { auth } from "@/lib/firebase/firebase";
 
-export type User = {
-  uid: string;
-} | null;
-
-export function onAuthStateChanged(cb: (user: User) => void) {
+export function onAuthStateChanged(cb: NextOrObserver<User>) {
   return _onAuthStateChanged(auth, cb);
 }
 

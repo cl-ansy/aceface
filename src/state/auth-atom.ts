@@ -1,21 +1,18 @@
-import { atom, useAtom } from "jotai";
+import { atom } from "jotai";
+import { User } from "firebase/auth";
 
-import {
-  type User,
-  onAuthStateChanged,
-  signInAnonymously,
-} from "@/lib/firebase/auth";
+import { onAuthStateChanged } from "@/lib/firebase/auth";
 
-const authAtom = atom<User>(null);
+const walletAtom = atom({ balance: 0 });
+
+const authAtom = atom<User | null>(null);
 
 authAtom.onMount = (setAtom) => {
   const unsubscribe = onAuthStateChanged((user) => {
     setAtom(user);
   });
 
-  signInAnonymously();
-
-  return unsubscribe;
+  return () => unsubscribe();
 };
 
 export default authAtom;

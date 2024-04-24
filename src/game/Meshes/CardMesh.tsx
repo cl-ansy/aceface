@@ -40,7 +40,6 @@ export default function CardMesh({ card, spring, handleClick }: CardMeshProps) {
   const backTexture = useTexture("/cards/vector/Back.svg");
   const { invalidate } = useThree();
 
-  console.log("render");
   const { positionX, positionY, positionZ, rotationX, rotationZ } = useSpring({
     ...spring,
     config: {
