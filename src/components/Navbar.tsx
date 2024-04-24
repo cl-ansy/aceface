@@ -5,21 +5,22 @@ import { useEffect } from "react";
 import { useAtom } from "jotai";
 
 import { signInAnonymously } from "@/lib/firebase/auth";
-import { getWalletByUserId } from "@/lib/firebase/firestore";
+// import { getWalletByUserId } from "@/lib/firebase/firestore";
 import Avatar from "@/components/Avatar";
 import Button from "@/components/Button";
 
-import { authAtom } from "@/state/atoms";
+import { displayNameAtom, userUidAtom } from "@/state/atoms";
 
 function Navbar() {
-  const [user] = useAtom(authAtom);
+  const [displayName] = useAtom(displayNameAtom);
+  const [userUid] = useAtom(userUidAtom);
 
-  useEffect(() => {
-    if (user && user.uid) {
-      const unsubscribe = getWalletByUserId(user.uid);
-      return () => unsubscribe();
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user && user.uid) {
+  //     const unsubscribe = getWalletByUserId(user.uid);
+  //     return () => unsubscribe();
+  //   }
+  // }, [user]);
 
   const handleLoginClick = () => {
     signInAnonymously();
@@ -36,10 +37,10 @@ function Navbar() {
 
         <div className="flex items-center gap-10 m700:hidden"></div>
         <div className="flex items-center justify-end gap-2">
-          {user ? (
+          {userUid ? (
             <>
               <Avatar />
-              <p>{user.displayName || "Anonymous"}</p>
+              <p>{displayName}</p>
             </>
           ) : (
             <Button
