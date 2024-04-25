@@ -1,4 +1,4 @@
-import JoinRoom from "@/components/Forms/JoinRoom";
+import JoinRoom from "@/components/forms/JoinRoom";
 
 export default function Join() {
   return (

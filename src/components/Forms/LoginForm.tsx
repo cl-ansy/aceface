@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { Button } from "@/components/Button";
+import { Button } from "@/components/ui/Button";
 import {
   Form,
   FormControl,
@@ -13,8 +13,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/Form";
-import { Input } from "@/components/Input";
+} from "@/components/ui/Form";
+import { Input } from "@/components/ui/Input";
 
 const formSchema = z.object({
   email: z.string().email(),

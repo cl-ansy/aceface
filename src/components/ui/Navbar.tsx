@@ -2,12 +2,19 @@
 
 import Link from "next/link";
 import { useAtomValue } from "jotai";
-import { AiOutlineUser } from "react-icons/ai";
 
 import { signInAnonymously } from "@/lib/firebase/auth";
-import Avatar from "@/components/Avatar";
-import Badge from "@/components/Badge";
-import { Button } from "@/components/Button";
+import { UserAvatar } from "@/components/UserAvatar";
+import Badge from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/DropdownMenu";
 
 import { authPendingAtom, balanceAtom, userUidAtom } from "@/state/atoms";
 
@@ -32,7 +39,20 @@ function Navbar() {
         <div className="flex items-center gap-10 m700:hidden"></div>
 
         <div className="flex items-center justify-end gap-2">
-          {userUid && balance && (
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <UserAvatar />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>Profile</DropdownMenuItem>
+              <DropdownMenuItem>Billing</DropdownMenuItem>
+              <DropdownMenuItem>Team</DropdownMenuItem>
+              <DropdownMenuItem>Subscription</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          {/* {userUid && balance && (
             <Badge className="font-bold" text={String(balance)} />
           )}
           {!isAuthPending && userUid && (
@@ -47,7 +67,7 @@ function Navbar() {
             >
               Log In
             </Button>
-          )}
+          )} */}
         </div>
       </div>
     </nav>

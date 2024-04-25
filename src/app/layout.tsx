@@ -1,9 +1,8 @@
 import { type Metadata } from "next";
-import { Provider } from "jotai";
 import { Inter } from "next/font/google";
 
 import AtomStoreProvider from "@/state/AtomStoreProvider";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/ui/Navbar";
 
 import "@/styles/globals.css";
 
