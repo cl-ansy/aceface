@@ -7,7 +7,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { signInAnonymously } from "@/lib/firebase/auth";
 import Avatar from "@/components/Avatar";
 import Badge from "@/components/Badge";
-import Button from "@/components/Button";
+import { Button } from "@/components/Button";
 
 import { authPendingAtom, balanceAtom, userUidAtom } from "@/state/atoms";
 
