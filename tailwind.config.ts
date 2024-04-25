@@ -11,8 +11,8 @@ const config: Config = {
     extend: {
       colors: {
         bg: "#daf5f0",
-        main: "#7fbc8c",
-        mainAccent: "#58a769", // not needed for shadcn
+        main: "#c4a1ff",
+        mainAccent: "#9e66ff", // not needed for shadcn
       },
       borderRadius: {
         base: "5px",
@@ -23,6 +23,10 @@ const config: Config = {
       translate: {
         boxShadowX: "4px",
         boxShadowY: "4px",
+      },
+      fontWeight: {
+        base: "500",
+        heading: "700",
       },
     },
   },
