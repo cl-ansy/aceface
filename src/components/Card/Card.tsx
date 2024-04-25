@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import * as Cards from "@/components/Card/CardFactory";
+import * as Cards from "@/components/card/CardFactory";
 
 import "@/components/Card/Card.scss";
 
