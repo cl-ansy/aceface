@@ -32,7 +32,9 @@ function Navbar() {
         <div className="flex items-center gap-10 m700:hidden"></div>
 
         <div className="flex items-center justify-end gap-2">
-          {userUid && <Badge text={String(balance)} />}
+          {userUid && balance && (
+            <Badge className="font-bold" text={String(balance)} />
+          )}
           {!isAuthPending && userUid && (
             <Avatar>
               <AiOutlineUser className="h-8 w-8" />
