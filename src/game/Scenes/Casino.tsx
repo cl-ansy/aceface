@@ -21,10 +21,9 @@ export default function CardShow() {
       <Canvas
         frameloop="demand"
         dpr={[1, 2]}
-        gl={{ antialias: true, alpha: false }}
+        gl={{ antialias: true, alpha: true }}
         flat
       >
-        <color attach="background" args={["#daf5f0"]} />
         <TableCamera />
         <TableControls />
         <Suspense fallback={<LoadingProgress />}>
