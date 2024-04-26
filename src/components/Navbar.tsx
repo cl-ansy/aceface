@@ -4,22 +4,12 @@ import Link from "next/link";
 import { useAtomValue } from "jotai";
 
 import { signInAnonymously } from "@/lib/firebase/auth";
-import { UserAvatar } from "@/components/UserAvatar";
+import { AuthDropdownMenu } from "@/components/AuthDropdownMenu";
 import Badge from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/DropdownMenu";
 
-import { authPendingAtom, balanceAtom, userUidAtom } from "@/state/atoms";
+import { balanceAtom, displayNameAtom, userUidAtom } from "@/state/atoms";
 
 function Navbar() {
-  const isAuthPending = useAtomValue(authPendingAtom);
   const userUid = useAtomValue(userUidAtom);
   const balance = useAtomValue(balanceAtom);
 
@@ -42,21 +32,7 @@ function Navbar() {
           {userUid && balance && (
             <Badge className="font-bold" text={String(balance)} />
           )}
-          {!isAuthPending && (
-            <DropdownMenu>
-              <DropdownMenuTrigger>
-                <UserAvatar />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>Profile</DropdownMenuItem>
-                <DropdownMenuItem>Billing</DropdownMenuItem>
-                <DropdownMenuItem>Team</DropdownMenuItem>
-                <DropdownMenuItem>Subscription</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          )}
+          <AuthDropdownMenu />
         </div>
       </div>
     </nav>

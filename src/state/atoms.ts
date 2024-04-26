@@ -6,23 +6,28 @@ import { getWalletByUserId } from "@/lib/firebase/firestore";
 import { DocumentData } from "firebase/firestore";
 
 export type Wallet = {
-  balance: number;
-  userUid: string;
+  balance?: number;
+  userUid?: string;
 };
 
 export const atomStore = createStore();
 
 // Auth
-export const authPendingAtom = atom(true);
+export const authPendingAtom = atom<boolean>(true);
 export const authAtom = atom<User | null>(null);
 
-export const userUidAtom = atom((get) => get(authAtom)?.uid);
-export const displayNameAtom = atom(
+export const userUidAtom = atom<string | undefined>(
+  (get) => get(authAtom)?.uid
+);
+export const displayNameAtom = atom<string | undefined>(
   (get) => get(authAtom)?.displayName || "Anonymous"
 );
 
 // Wallet
-export const walletAtom = atom({ userUid: undefined, balance: undefined });
+export const walletAtom = atom<Wallet>({
+  userUid: undefined,
+  balance: undefined,
+});
 export const balanceAtom = focusAtom(walletAtom, (optic) =>
   optic.prop("balance")
 );
