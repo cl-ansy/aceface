@@ -28,19 +28,21 @@ export const walletAtom = atom<Wallet>({
   userUid: undefined,
   balance: undefined,
 });
+// const walletUnsubAtom = atom(undefined);
 export const balanceAtom = focusAtom(walletAtom, (optic) =>
   optic.prop("balance")
 );
 
 // Subscribers
-atomStore.sub(userUidAtom, () => {
-  const userUid = atomStore.get(userUidAtom);
-  const setBalance = (data: DocumentData | undefined) => {
-    atomStore.set(walletAtom, {
-      userUid: data && data.userUid,
-      balance: data && data.balance,
-    });
-  };
-  const unsub = getWalletByUserId(userUid || "", setBalance);
-  return () => unsub();
-});
+// atomStore.sub(userUidAtom, () => {
+//   const userUid = atomStore.get(userUidAtom);
+//   const setBalance = (data: DocumentData | undefined) => {
+//     atomStore.set(walletAtom, {
+//       userUid: data && data.userUid,
+//       balance: data && data.balance,
+//     });
+//   };
+//   const unsub = getWalletByUserId(userUid, setBalance);
+//   atomStore.set(walletSubscriberAtom, unsub);
+//   return unsub;
+// });

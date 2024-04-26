@@ -19,10 +19,7 @@ const useAuthSub = () => {
       setAuth(user);
       setAuthPending(false);
     });
-
-    return () => {
-      unsubscribe();
-    };
+    return unsubscribe;
   }, [setAuth, setAuthPending]);
 };
 

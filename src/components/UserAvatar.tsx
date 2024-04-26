@@ -3,14 +3,16 @@ import { AiOutlineUser } from "react-icons/ai";
 
 import Avatar from "@/components/ui/Avatar";
 
-import { displayNameAtom } from "@/state/atoms";
+import { displayNameAtom, userUidAtom } from "@/state/atoms";
 
 export function UserAvatar() {
   const displayName = useAtomValue(displayNameAtom);
+  const userUid = useAtomValue(userUidAtom);
 
   return (
     <Avatar>
-      {displayName ? displayName[0] : <AiOutlineUser className="h-8 w-8" />}
+      {userUid && displayName && displayName[0]}
+      {!userUid && <AiOutlineUser className="h-8 w-8" />}
     </Avatar>
   );
 }

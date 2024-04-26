@@ -3,19 +3,14 @@
 import Link from "next/link";
 import { useAtomValue } from "jotai";
 
-import { signInAnonymously } from "@/lib/firebase/auth";
 import { AuthDropdownMenu } from "@/components/AuthDropdownMenu";
 import Badge from "@/components/ui/Badge";
 
-import { balanceAtom, displayNameAtom, userUidAtom } from "@/state/atoms";
+import { balanceAtom, userUidAtom } from "@/state/atoms";
 
 function Navbar() {
   const userUid = useAtomValue(userUidAtom);
   const balance = useAtomValue(balanceAtom);
-
-  const handleLoginClick = () => {
-    signInAnonymously();
-  };
 
   return (
     <nav className="fixed left-0 top-0 z-10 mx-auto flex h-20 w-full items-center px-5 m500:h-16 ">
