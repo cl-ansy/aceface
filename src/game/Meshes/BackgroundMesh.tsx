@@ -14,5 +14,5 @@ export default function CarpetMesh() {
     return () => {
       scene.background = oldBackground;
     };
-  }, [carpetTexture]);
+  }, [scene, carpetTexture]);
 }
