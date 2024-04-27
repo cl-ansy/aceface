@@ -25,6 +25,7 @@
     "jotai-optics": "^0.3.2",
     "next": "14.2.0",
     "optics-ts": "^2.4.1",
+    "r3f-perf": "^7.2.1",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.51.3",

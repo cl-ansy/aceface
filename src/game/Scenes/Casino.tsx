@@ -2,7 +2,7 @@
 
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Stats } from "@react-three/drei";
+import { Perf } from "r3f-perf";
 
 import "@/game/Loaders/AssetLoader";
 import LoadingProgress from "@/game/Loaders/LoadingProgress";
@@ -15,7 +15,7 @@ export default function CardShow() {
   return (
     <div id="canvas-container" className="w-screen h-screen">
       <Canvas
-        frameloop="demand"
+        // frameloop="demand"
         dpr={[1, 2]}
         gl={{ antialias: true, alpha: false }}
         flat
@@ -31,7 +31,7 @@ export default function CardShow() {
           <TableView />
         </Suspense>
         <BaseLighting />
-        <Stats />
+        <Perf position="top-left" />
       </Canvas>
     </div>
   );
