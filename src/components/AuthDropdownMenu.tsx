@@ -1,6 +1,6 @@
-import { useAtomValue } from "jotai";
+import { useAtomValue, useSetAtom } from "jotai";
 
-import { signInAnonymously, signOut } from "@/lib/firebase/auth";
+import { signInAnonymously } from "@/lib/firebase/auth";
 import { UserAvatar } from "@/components/UserAvatar";
 import {
   DropdownMenu,
@@ -11,17 +11,18 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/DropdownMenu";
 
-import { displayNameAtom } from "@/state/atoms";
+import { displayNameAtom, clearAuthAtom } from "@/state/atoms";
 
 export function AuthDropdownMenu() {
   const displayName = useAtomValue(displayNameAtom);
+  const setClearAuthAtom = useSetAtom(clearAuthAtom);
 
   const handleLoginClick = () => {
     signInAnonymously();
   };
 
   const handleSignOutClick = () => {
-    signOut();
+    setClearAuthAtom();
   };
 
   return (
@@ -32,7 +33,7 @@ export function AuthDropdownMenu() {
       <DropdownMenuContent>
         <DropdownMenuLabel>{displayName}</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        {/* <DropdownMenuItem onClick={handleLoginClick}>Sign in</DropdownMenuItem> */}
+        <DropdownMenuItem onClick={handleLoginClick}>Sign in</DropdownMenuItem>
         <DropdownMenuItem onClick={handleSignOutClick}>
           Sign out
         </DropdownMenuItem>
