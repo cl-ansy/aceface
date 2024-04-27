@@ -11,33 +11,46 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/DropdownMenu";
 
-import { displayNameAtom, clearAuthAtom } from "@/state/atoms";
+import { userUidAtom, displayNameAtom, clearAuthAtom } from "@/state/atoms";
 
-export function AuthDropdownMenu() {
+function AuthContent() {
   const displayName = useAtomValue(displayNameAtom);
   const setClearAuthAtom = useSetAtom(clearAuthAtom);
-
-  const handleLoginClick = () => {
-    signInAnonymously();
-  };
 
   const handleSignOutClick = () => {
     setClearAuthAtom();
   };
 
   return (
+    <DropdownMenuContent>
+      <DropdownMenuLabel>{displayName}</DropdownMenuLabel>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem onClick={handleSignOutClick}>Sign out</DropdownMenuItem>
+    </DropdownMenuContent>
+  );
+}
+
+function UnauthContent() {
+  const handleLoginClick = () => {
+    signInAnonymously();
+  };
+
+  return (
+    <DropdownMenuContent>
+      <DropdownMenuItem onClick={handleLoginClick}>Sign in</DropdownMenuItem>
+    </DropdownMenuContent>
+  );
+}
+
+export function AuthDropdownMenu() {
+  const userUid = useAtomValue(userUidAtom);
+
+  return (
     <DropdownMenu>
       <DropdownMenuTrigger>
         <UserAvatar />
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuLabel>{displayName}</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={handleLoginClick}>Sign in</DropdownMenuItem>
-        <DropdownMenuItem onClick={handleSignOutClick}>
-          Sign out
-        </DropdownMenuItem>
-      </DropdownMenuContent>
+      {userUid ? <AuthContent /> : <UnauthContent />}
     </DropdownMenu>
   );
 }
