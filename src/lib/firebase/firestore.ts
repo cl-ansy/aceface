@@ -7,6 +7,7 @@ export const getWalletByUserId = (
   cb: (wallet: DocumentData | undefined) => void
 ) => {
   if (!userUid) return;
+
   const unsub = onSnapshot(doc(firestore, "wallets", userUid), (doc) => {
     cb(doc.data());
   });
