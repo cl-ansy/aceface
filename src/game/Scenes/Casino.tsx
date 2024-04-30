@@ -16,8 +16,12 @@ export default function CardShow() {
     <div id="canvas-container" className="w-screen h-screen">
       <Canvas
         // frameloop="demand"
-        dpr={[1, 2]}
-        gl={{ antialias: true, alpha: false }}
+        dpr={[1, 1.5]}
+        gl={{
+          antialias: true,
+          alpha: false,
+          sortObjects: false,
+        }}
         flat
       >
         <color attach="background" args={["#daf5f0"]} />

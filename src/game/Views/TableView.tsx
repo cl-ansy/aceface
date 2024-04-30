@@ -1,9 +1,10 @@
 import { useState, useRef } from "react";
-import { atom, useAtom, PrimitiveAtom } from "jotai";
+import { atom, PrimitiveAtom } from "jotai";
 import { ThreeEvent } from "@react-three/fiber";
 
 import CardMesh from "@/game/Meshes/CardMesh";
 
+import { randomInRange } from "@/lib/utils";
 import { DECK } from "@/lib/constants";
 
 const TABLEHEIGHT = 100;
@@ -20,7 +21,7 @@ export default function Table() {
       from: {
         positionX: 300,
         positionY: 200,
-        positionZ: cardIdx * 0.1 + TABLEHEIGHT,
+        positionZ: TABLEHEIGHT,
         rotationX: -Math.PI,
         rotationZ: 0,
       },
@@ -33,11 +34,10 @@ export default function Table() {
 
     if (cardIdx > -1) {
       spring.to = {
-        positionX: (0.5 - Math.random()) * 100,
-        positionY: -200 - Math.random() * 100,
-        positionZ: cardIdx * 0.1 + TABLEHEIGHT,
+        positionX: randomInRange(-25, 25),
+        positionY: randomInRange(-195, -205),
         rotationX: 0,
-        rotationZ: 0.5 - Math.random(),
+        rotationZ: randomInRange(-0.3, 0.3),
       };
     }
 
