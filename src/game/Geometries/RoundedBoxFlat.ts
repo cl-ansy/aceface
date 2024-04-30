@@ -1,20 +1,25 @@
 import * as THREE from "three";
 
-// Standard card dimensions -
-// 88.9:63.5:2mm
+// Standard card dimensions
 // Width: 2.5 in | 63.5 mm
 // Height: 3.5 in | 88.9 mm
 // Depth: 2mm
 // Radius: 3.5mm
-export const CardGeometry = RoundedBoxFlat(63.5, 88.9, 1, 3.5, 7, 1);
+export const CardGeometry = RoundedBoxFlat(63.5, 88.9, 1, 3.5, 7);
 
-// width, height, depth, radius, smoothness, quadrant
-export function RoundedBoxFlat(w, h, d, r, s, q) {
+export function RoundedBoxFlat(
+  w: number, // width
+  h: number, // height
+  d: number, // depth
+  r: number, // radius
+  s: number, // smoothness
+  q?: number // quadrant
+) {
   let qu = q || 1; // qu: start quadrant regarding u, optional
   const pi = Math.PI;
-  let indices = [];
-  let positions = [];
-  let uvs = [];
+  let indices: number[] = [];
+  let positions: number[] = [];
+  let uvs: number[] = [];
 
   makeFronts(s, 1, 0); // smoothness, front is 1, start index  center front
   makeFronts(s, -1, 4 * (s + 3) + 1); // smoothness, back is -1, start index center back
@@ -41,7 +46,7 @@ export function RoundedBoxFlat(w, h, d, r, s, q) {
 
   return geometry;
 
-  function makeFronts(s, side, idx) {
+  function makeFronts(s: number, side: number, idx: number) {
     const d0 = side === 1 ? 0 : 1;
     const d1 = side === 1 ? 1 : 0;
 
@@ -102,7 +107,7 @@ export function RoundedBoxFlat(w, h, d, r, s, q) {
     }
   }
 
-  function makeFrame(s, sidx, sif, sib) {
+  function makeFrame(s: number, sidx: number, sif: number, sib: number) {
     let a, b, c, d, xf, yf, zf, xb, yb, zb;
     const pif = sif * 3; // position start index front
     const pib = sib * 3; // position start index back
