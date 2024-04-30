@@ -1,5 +1,5 @@
 import "@/game/Loaders/AssetLoader";
-import { useRef } from "react";
+import { useRef, useMemo } from "react";
 import { useAtom } from "jotai";
 import { ThreeEvent, useFrame, useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
@@ -13,11 +13,14 @@ import {
 } from "@react-spring/three";
 import { PrimitiveAtom } from "jotai";
 
+import { CardGeometry } from "@/game/Geometries/RoundedBoxFlat";
+
 type CardSpringValues = SpringValues<{
   positionX?: number;
   positionY?: number;
   positionZ?: number;
   rotationX?: number;
+  rotationY?: number;
   rotationZ?: number;
 }>;
 
@@ -40,19 +43,20 @@ export default function CardMesh({ card, spring, handleClick }: CardMeshProps) {
   const backTexture = useTexture("/assets/cards/vector/Back.svg");
   const { invalidate } = useThree();
 
-  const { positionX, positionY, positionZ, rotationX, rotationZ } = useSpring({
-    ...spring,
-    config: {
-      precision: 0.0001,
-      ...spring.config,
-    },
-    onStart: () => {
-      isAnimating.current = true;
-    },
-    onRest: () => {
-      isAnimating.current = false;
-    },
-  });
+  const { positionX, positionY, positionZ, rotationX, rotationY, rotationZ } =
+    useSpring({
+      ...spring,
+      config: {
+        precision: 0.0001,
+        ...spring.config,
+      },
+      onStart: () => {
+        isAnimating.current = true;
+      },
+      onRest: () => {
+        isAnimating.current = false;
+      },
+    });
 
   useFrame(() => isAnimating.current && invalidate());
 
@@ -64,9 +68,26 @@ export default function CardMesh({ card, spring, handleClick }: CardMeshProps) {
       position-y={positionY}
       position-z={positionZ}
       rotation-x={rotationX}
+      rotation-y={rotationY}
       rotation-z={rotationZ}
+      geometry={CardGeometry}
     >
-      <boxGeometry args={[100, 140, 0.1]} />
+      <meshStandardMaterial
+        attach="material-0"
+        map={cardTexture}
+        depthWrite={false}
+      />
+      <meshStandardMaterial
+        attach="material-1"
+        map={backTexture}
+        depthWrite={false}
+      />
+      <meshStandardMaterial
+        attach="material-2"
+        color="white"
+        depthWrite={false}
+      />
+      {/* <boxGeometry args={[100, 140, 0.1]} />
       {[null, null, null, null, cardTexture, backTexture].map((texture, i) => (
         <meshBasicMaterial
           key={i}
@@ -75,7 +96,7 @@ export default function CardMesh({ card, spring, handleClick }: CardMeshProps) {
           depthWrite={false}
           transparent
         />
-      ))}
+      ))} */}
     </animated.mesh>
   );
 }
