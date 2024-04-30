@@ -18,8 +18,6 @@ export default function CardShow() {
         // frameloop="demand"
         dpr={[1, 1.5]}
         gl={{
-          antialias: true,
-          alpha: false,
           sortObjects: false,
         }}
         flat
