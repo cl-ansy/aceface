@@ -15,7 +15,7 @@ export default function CardShow() {
   return (
     <div id="canvas-container" className="w-screen h-screen">
       <Canvas
-        frameloop="demand"
+        // frameloop="demand"
         dpr={[1, 1.5]}
         gl={{ sortObjects: false }}
         flat
@@ -27,7 +27,7 @@ export default function CardShow() {
         />
 
         <TableCamera />
-        <TableControls />
+        {/* <TableControls /> */}
         <TableLighting />
 
         <Suspense fallback={<LoadingProgress />}>

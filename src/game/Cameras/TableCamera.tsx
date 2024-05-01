@@ -7,8 +7,9 @@ export default function FloorCamera({ children }: { children?: ReactNode }) {
       zoom={1}
       near={0.1}
       far={1000}
-      fov={100}
-      position={[0, -100, 500]}
+      fov={50}
+      position={[0, -75, 450]}
+      rotation={[0.3, 0, 0]}
       makeDefault
     >
       {children}

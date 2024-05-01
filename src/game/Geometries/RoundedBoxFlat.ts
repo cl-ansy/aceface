@@ -5,7 +5,7 @@ import * as THREE from "three";
 // Height: 3.5 in | 88.9 mm
 // Depth: 2mm
 // Radius: 3.5mm
-export const CardGeometry = RoundedBoxFlat(63.5, 88.9, 1, 3.5, 7);
+export const CardGeometry = RoundedBoxFlat(6.35, 8.89, 0.1, 0.35, 4);
 
 export function RoundedBoxFlat(
   w: number, // width

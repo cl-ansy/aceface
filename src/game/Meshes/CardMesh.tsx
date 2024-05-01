@@ -60,7 +60,6 @@ export default function CardMesh({ card, spring, handleClick }: CardMeshProps) {
 
   useFrame(() => isAnimating.current && invalidate());
 
-  // Cards should me 2.5:3.5
   return (
     <animated.mesh
       onClick={handleClick}
@@ -71,6 +70,7 @@ export default function CardMesh({ card, spring, handleClick }: CardMeshProps) {
       rotation-y={rotationY}
       rotation-z={rotationZ}
       geometry={CardGeometry}
+      scale={3}
     >
       <meshStandardMaterial
         attach="material-0"
@@ -87,16 +87,6 @@ export default function CardMesh({ card, spring, handleClick }: CardMeshProps) {
         color="white"
         depthWrite={false}
       />
-      {/* <boxGeometry args={[100, 140, 0.1]} />
-      {[null, null, null, null, cardTexture, backTexture].map((texture, i) => (
-        <meshBasicMaterial
-          key={i}
-          attach={`material-${i}`}
-          map={texture}
-          depthWrite={false}
-          transparent
-        />
-      ))} */}
     </animated.mesh>
   );
 }
