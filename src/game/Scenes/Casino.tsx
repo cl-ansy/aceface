@@ -19,10 +19,7 @@ export default function CardShow() {
         flat
       >
         <color attach="background" args={["#daf5f0"]} />
-        <gridHelper
-          args={[2000, 40, 0xff0000, "teal"]}
-          rotation={[Math.PI / 2, 0, 0]}
-        />
+        <gridHelper args={[2000, 40]} rotation={[Math.PI / 2, 0, 0]} />
 
         <Suspense fallback={<LoadingProgress />}>
           <TableView />

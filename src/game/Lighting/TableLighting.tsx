@@ -10,7 +10,7 @@ function Spotlight() {
     <spotLight
       ref={spotlightRef}
       position={[0, 0, 500]}
-      intensity={500}
+      intensity={1000}
       decay={1}
       angle={Math.PI / 2.5}
       castShadow
@@ -22,7 +22,7 @@ export default function TableLighting() {
   return (
     <>
       <Spotlight />
-      <ambientLight intensity={1} />
+      {/* <ambientLight intensity={3} /> */}
     </>
   );
 }
