@@ -59,7 +59,7 @@ export default function Table() {
   return (
     <>
       <TableCamera />
-      {/* <TableControls /> */}
+      <TableControls />
       <TableLighting />
       <TableMesh />
       <CardMesh
