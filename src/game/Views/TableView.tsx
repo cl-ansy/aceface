@@ -24,7 +24,7 @@ export default function Table() {
     const spring = {
       from: {
         positionX: 100,
-        positionY: 75,
+        positionY: 100,
         positionZ: TABLEHEIGHT,
         rotationX: -Math.PI,
         rotationZ: 0,

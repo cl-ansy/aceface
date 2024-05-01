@@ -9,7 +9,7 @@ function Spotlight() {
   return (
     <spotLight
       ref={spotlightRef}
-      position={[0, 0, 500]}
+      position={[0, 0, 600]}
       intensity={1000}
       decay={1}
       angle={Math.PI / 2.5}
