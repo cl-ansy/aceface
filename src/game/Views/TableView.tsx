@@ -32,7 +32,7 @@ const getSpring = (cardIdx: number) => {
       {
         positionX: 50,
         positionY: 25,
-        positionZ: TABLEHEIGHT + 50,
+        positionZ: TABLEHEIGHT + 25,
         rotationX: 0,
       },
       {
