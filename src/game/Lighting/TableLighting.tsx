@@ -11,7 +11,7 @@ function Spotlight() {
       ref={spotlightRef}
       position={[0, -30, 300]}
       rotation={[2, 0, 0]}
-      intensity={300}
+      intensity={350}
       decay={1}
       angle={2}
       castShadow
