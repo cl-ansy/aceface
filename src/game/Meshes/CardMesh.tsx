@@ -1,6 +1,6 @@
 import "@/game/Loaders/AssetLoader";
-import { useRef, useMemo } from "react";
-import { useAtom } from "jotai";
+import { useRef, useMemo, useEffect } from "react";
+import { useAtomValue } from "jotai";
 import { ThreeEvent, useFrame, useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import {
@@ -38,25 +38,20 @@ type CardMeshProps = {
 
 export default function CardMesh({ card, spring, handleClick }: CardMeshProps) {
   const isAnimating = useRef(false);
-  const [cardName] = useAtom(card);
+  const cardName = useAtomValue(card);
   const cardTexture = useTexture(`/assets/cards/vector/${cardName}.svg`);
   const backTexture = useTexture("/assets/cards/vector/Back.svg");
   const { invalidate } = useThree();
 
-  const { positionX, positionY, positionZ, rotationX, rotationY, rotationZ } =
-    useSpring({
-      ...spring,
-      config: {
-        precision: 0.0001,
-        ...spring.config,
-      },
-      onStart: () => {
-        isAnimating.current = true;
-      },
-      onRest: () => {
-        isAnimating.current = false;
-      },
-    });
+  const [{ positionX, positionY, positionZ, rotationX, rotationY, rotationZ }] =
+    useSpring(
+      () => ({
+        ...spring,
+        onStart: () => (isAnimating.current = true),
+        onRest: () => (isAnimating.current = false),
+      }),
+      [spring]
+    );
 
   useFrame(() => isAnimating.current && invalidate());
 

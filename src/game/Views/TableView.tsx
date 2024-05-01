@@ -1,5 +1,4 @@
-import { useState, useRef } from "react";
-import { atom, PrimitiveAtom } from "jotai";
+import { atom, useAtom, PrimitiveAtom } from "jotai";
 import { ThreeEvent } from "@react-three/fiber";
 
 import TableCamera from "@/game/Cameras/TableCamera";
@@ -8,51 +7,60 @@ import TableLighting from "@/game/Lighting/TableLighting";
 import TableMesh from "@/game/Meshes/TableMesh";
 import CardMesh from "@/game/Meshes/CardMesh";
 
-import { randomInRange } from "@/lib/utils";
+import { degreesToRadians, randomInRange } from "@/lib/utils";
 import { DECK } from "@/lib/constants";
 
-const TABLEHEIGHT = 210;
+const TABLEHEIGHT = 190;
+const DEFAULT_SPRING = {
+  from: {
+    positionX: 100,
+    positionY: 100,
+    positionZ: TABLEHEIGHT,
+    rotationX: degreesToRadians(180),
+    rotationZ: 0,
+  },
+  delay: 0,
+  config: {
+    duration: 300,
+  },
+};
 
-const backAtom = atom("Back");
-
-export default function Table() {
-  const springs = useRef<any>({});
-  const [cards, setCards] = useState<PrimitiveAtom<string>[]>([]);
-
-  const getSpring = (cardIdx: number) => {
-    if (springs.current[cardIdx]) return springs.current[cardIdx];
-    const spring = {
-      from: {
-        positionX: 100,
-        positionY: 100,
-        positionZ: TABLEHEIGHT,
-        rotationX: -Math.PI,
-        rotationZ: 0,
+const getSpring = (cardIdx: number) => {
+  return {
+    ...DEFAULT_SPRING,
+    to: [
+      {
+        positionX: 50,
+        positionY: 25,
+        positionZ: TABLEHEIGHT + 50,
+        rotationX: 0,
       },
-      to: {},
-      config: {
-        tension: 150,
-        friction: 29,
-      },
-    };
-
-    if (cardIdx > -1) {
-      spring.to = {
+      {
         positionX: randomInRange(-5, 5),
         positionY: randomInRange(-18, -22),
-        rotationX: 0,
+        positionZ: TABLEHEIGHT,
         rotationZ: randomInRange(0, 0.5 - (cardIdx % 2)),
-      };
-    }
-
-    springs.current[cardIdx] = spring;
-    return spring;
+      },
+    ],
   };
+};
+
+const backAtom = atom("Back");
+const cardsAtom = atom<PrimitiveAtom<string>[]>([]);
+const springsAtom = atom<any>([]);
+
+export default function Table() {
+  const [springs, setSprings] = useAtom(springsAtom);
+  const [cards, setCards] = useAtom(cardsAtom);
 
   const onDeckClick = (event: ThreeEvent<MouseEvent>) => {
     event.stopPropagation();
+
     const randomCard = Math.floor(Math.random() * (DECK.length - 1));
     const card = atom<string>(DECK[randomCard]);
+    const spring = getSpring(cards.length);
+
+    setSprings([...springs, spring]);
     setCards([...cards, card]);
   };
 
@@ -64,11 +72,11 @@ export default function Table() {
       <TableMesh />
       <CardMesh
         card={backAtom}
-        spring={getSpring(-1)}
+        spring={DEFAULT_SPRING}
         handleClick={onDeckClick}
       />
       {cards.map((card, i) => (
-        <CardMesh key={i} card={card} spring={getSpring(i)} />
+        <CardMesh key={i} card={card} spring={springs[i]} />
       ))}
     </>
   );
