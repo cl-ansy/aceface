@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -14,7 +15,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/Form";
-
+import { Label } from "@/components/ui/Label";
+import { Switch } from "@/components/ui/Switch";
 import { Input } from "@/components/ui/Input";
 
 const formSchema = z.object({
@@ -26,6 +28,7 @@ const formSchema = z.object({
 });
 
 export function RegisterForm() {
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -63,10 +66,23 @@ export function RegisterForm() {
             <FormItem>
               <FormLabel className="sr-only">Password</FormLabel>
               <FormControl>
-                <Input type="password" placeholder="Password" {...field} />
+                <Input
+                  type={passwordVisible ? "text" : "password"}
+                  placeholder="Password"
+                  {...field}
+                />
               </FormControl>
-              {/* <FormDescription>Email</FormDescription> */}
+              {/* <FormDescription>Password</FormDescription> */}
               <FormMessage />
+              <div className="flex items-center py-4 space-x-2">
+                <Switch
+                  tabIndex={-1}
+                  id="show-password"
+                  checked={passwordVisible}
+                  onCheckedChange={setPasswordVisible}
+                />
+                <Label htmlFor="show-password"> Show Password</Label>
+              </div>
             </FormItem>
           )}
         />
