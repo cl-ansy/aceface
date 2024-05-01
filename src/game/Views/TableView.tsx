@@ -13,11 +13,11 @@ import { DECK } from "@/lib/constants";
 const TABLEHEIGHT = 190;
 const DEFAULT_SPRING = {
   from: {
-    positionX: 100,
+    positionX: 125,
     positionY: 100,
     positionZ: TABLEHEIGHT,
-    rotationX: degreesToRadians(180),
-    rotationZ: 0,
+    rotationY: degreesToRadians(-180),
+    rotationZ: degreesToRadians(-10),
   },
   delay: 0,
   config: {
@@ -30,10 +30,10 @@ const getSpring = (cardIdx: number) => {
     ...DEFAULT_SPRING,
     to: [
       {
-        positionX: 50,
-        positionY: 25,
+        positionX: 90,
+        positionY: 90,
         positionZ: TABLEHEIGHT + 25,
-        rotationX: 0,
+        rotationY: 0,
       },
       {
         positionX: randomInRange(-5, 5),
