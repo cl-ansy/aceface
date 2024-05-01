@@ -12,7 +12,7 @@ const buttonVariants = cva(
         default:
           "bg-main border-2 border-black shadow-base hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none",
         noShadow: "bg-main border-2 border-black",
-        link: "underline-offset-4 hover:underline",
+        link: "underline-offset-4 underline",
         neutral: "bg-white border-2 border-black",
       },
       size: {
@@ -20,6 +20,7 @@ const buttonVariants = cva(
         sm: "h-9 px-3",
         lg: "h-11 px-8 text-base",
         icon: "h-10 w-10",
+        inline: "h-auto",
       },
     },
     defaultVariants: {

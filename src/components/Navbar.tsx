@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useAtomValue } from "jotai";
 
 import { AuthDropdownMenu } from "@/components/AuthDropdownMenu";
+import { AuthDialog } from "@/components/AuthDialog";
 import Badge from "@/components/ui/Badge";
 
 import { balanceAtom, userUidAtom } from "@/state/atoms";
@@ -27,7 +28,8 @@ function Navbar() {
           {userUid && balance && (
             <Badge className="font-bold" text={String(balance)} />
           )}
-          <AuthDropdownMenu />
+          {userUid && <AuthDropdownMenu />}
+          {!userUid && <AuthDialog />}
         </div>
       </div>
     </nav>

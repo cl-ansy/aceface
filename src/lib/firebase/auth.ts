@@ -3,12 +3,24 @@ import {
   User,
   onAuthStateChanged as _onAuthStateChanged,
   signInAnonymously as _signInAnonymously,
+  createUserWithEmailAndPassword as _createUserWithEmailAndPassword,
 } from "firebase/auth";
 
 import { auth } from "@/lib/firebase/firebase";
 
 export function onAuthStateChanged(cb: NextOrObserver<User>) {
   return _onAuthStateChanged(auth, cb);
+}
+
+export async function createUserWithEmailAndPassword(
+  email: string,
+  password: string
+) {
+  try {
+    await _createUserWithEmailAndPassword(auth, email, password);
+  } catch (error) {
+    console.log("Error creating account", error);
+  }
 }
 
 export async function signInAnonymously() {

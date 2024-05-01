@@ -37,7 +37,7 @@ function UnauthContent() {
 
   return (
     <DropdownMenuContent>
-      <DropdownMenuItem onClick={handleLoginClick}>Sign in</DropdownMenuItem>
+      <DropdownMenuItem>Sign in</DropdownMenuItem>
     </DropdownMenuContent>
   );
 }
