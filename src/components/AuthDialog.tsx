@@ -10,11 +10,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/Dialog";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
 import { Button } from "@/components/ui/Button";
-import { Label } from "@/components/ui/Label";
-import { Input } from "@/components/ui/Input";
-import { LoginForm, RegisterForm } from "@/components/forms/AuthForm";
+import { LoginForm } from "@/components/forms/LoginForm";
+import { RegisterForm } from "@/components/forms/RegisterForm";
 
 export function AuthDialog() {
   const [isLogin, setIsLogin] = useState(true);
