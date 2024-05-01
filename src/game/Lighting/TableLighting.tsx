@@ -9,10 +9,11 @@ function Spotlight() {
   return (
     <spotLight
       ref={spotlightRef}
-      position={[0, 0, 600]}
+      position={[0, 0, 500]}
+      rotation={[2, 0, 0]}
       intensity={1000}
-      decay={1}
-      angle={Math.PI / 2.5}
+      decay={1.1}
+      angle={1}
       castShadow
     />
   );

@@ -8,3 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 export function randomInRange(min: number, max: number): number {
   return Math.random() * (max - min) + min;
 }
+
+export function degreesToRadians(degrees: number): number {
+  return (degrees * Math.PI) / 180;
+}

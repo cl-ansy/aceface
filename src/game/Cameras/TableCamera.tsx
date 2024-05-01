@@ -7,11 +7,10 @@ export default function FloorCamera({
 }) {
   return (
     <OrthographicCamera
-      zoom={4}
+      zoom={5}
       near={0.1}
       far={1000}
-      position={[0, 0, 500]}
-      rotation={[0.3, 0, 0]}
+      position={[0, -30, 300]}
       makeDefault
     >
       {children}
