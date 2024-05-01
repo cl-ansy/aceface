@@ -11,7 +11,7 @@ import CardMesh from "@/game/Meshes/CardMesh";
 import { randomInRange } from "@/lib/utils";
 import { DECK } from "@/lib/constants";
 
-const TABLEHEIGHT = 195;
+const TABLEHEIGHT = 210;
 
 const backAtom = atom("Back");
 
