@@ -6,9 +6,7 @@ import { Perf } from "r3f-perf";
 
 import "@/game/Loaders/AssetLoader";
 import LoadingProgress from "@/game/Loaders/LoadingProgress";
-import TableCamera from "@/game/Cameras/TableCamera";
-import TableControls from "@/game/Controls/TableControls";
-import TableLighting from "@/game/Lighting/TableLighting";
+
 import TableView from "@/game/Views/TableView";
 
 export default function CardShow() {
@@ -25,10 +23,6 @@ export default function CardShow() {
           args={[2000, 40, 0xff0000, "teal"]}
           rotation={[Math.PI / 2, 0, 0]}
         />
-
-        <TableCamera />
-        {/* <TableControls /> */}
-        <TableLighting />
 
         <Suspense fallback={<LoadingProgress />}>
           <TableView />

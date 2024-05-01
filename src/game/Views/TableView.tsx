@@ -2,6 +2,9 @@ import { useState, useRef } from "react";
 import { atom, PrimitiveAtom } from "jotai";
 import { ThreeEvent } from "@react-three/fiber";
 
+import TableCamera from "@/game/Cameras/TableCamera";
+import TableControls from "@/game/Controls/TableControls";
+import TableLighting from "@/game/Lighting/TableLighting";
 import TableMesh from "@/game/Meshes/TableMesh";
 import CardMesh from "@/game/Meshes/CardMesh";
 
@@ -55,6 +58,9 @@ export default function Table() {
 
   return (
     <>
+      <TableCamera />
+      {/* <TableControls /> */}
+      <TableLighting />
       <TableMesh />
       <CardMesh
         card={backAtom}
