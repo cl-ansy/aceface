@@ -1,7 +1,5 @@
 import { useTexture, useGLTF } from "@react-three/drei";
 
-useTexture.preload("/assets/carpets/1K-casino_carpet_2-diffuse.jpg");
-
 useGLTF.preload("/assets/table/Blackjack_Table.glb");
 
 useTexture.preload("/assets/cards/vector/2H.svg");

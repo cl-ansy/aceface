@@ -9,12 +9,10 @@ function Spotlight() {
   return (
     <spotLight
       ref={spotlightRef}
-      position={[0, 0, 400]}
-      rotation={[0, 0, 0]}
-      intensity={300}
-      decay={1.1}
-      angle={10}
-      castShadow
+      position={[0, 250, -80]}
+      intensity={750}
+      decay={1}
+      angle={Math.PI / 2.2}
     />
   );
 }
@@ -22,9 +20,7 @@ function Spotlight() {
 export default function TableLighting() {
   return (
     <>
-      <Stage intensity={-5} />
-      {/* <Spotlight />
-      <ambientLight intensity={1} /> */}
+      <Spotlight />
     </>
   );
 }

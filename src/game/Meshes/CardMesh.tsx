@@ -67,21 +67,17 @@ export default function CardMesh({ card, spring, handleClick }: CardMeshProps) {
       geometry={CardGeometry}
       scale={3}
     >
-      <meshStandardMaterial
+      <meshPhongMaterial
         attach="material-0"
         map={cardTexture}
         depthWrite={false}
       />
-      <meshStandardMaterial
+      <meshPhongMaterial
         attach="material-1"
         map={backTexture}
         depthWrite={false}
       />
-      <meshStandardMaterial
-        attach="material-2"
-        color="white"
-        depthWrite={false}
-      />
+      <meshPhongMaterial attach="material-2" color="white" depthWrite={false} />
     </animated.mesh>
   );
 }

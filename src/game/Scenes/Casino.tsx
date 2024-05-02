@@ -34,7 +34,7 @@ export default function CardShow() {
         gl={{ sortObjects: false, antialias: true }}
         flat
       >
-        <color attach="background" args={["#daf5f0"]} />
+        {/* <color attach="background" args={["#daf5f0"]} /> */}
 
         <TableCamera />
         <TableControls />
