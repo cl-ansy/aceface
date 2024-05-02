@@ -1,6 +1,6 @@
 import "@/game/Loaders/CardPreloader";
 
-import { useRef, useMemo, useEffect } from "react";
+import { useRef } from "react";
 import { useAtomValue } from "jotai";
 import { ThreeEvent, useFrame, useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
@@ -14,7 +14,7 @@ import {
 } from "@react-spring/three";
 import { PrimitiveAtom } from "jotai";
 
-import { CardGeometry } from "@/game/Geometries/RoundedBoxFlat";
+import { RoundedBoxFlat } from "@/game/Geometries/RoundedBoxFlat";
 
 type CardSpringValues = SpringValues<{
   positionX?: number;
@@ -36,6 +36,13 @@ type CardMeshProps = {
   spring: CardSpring;
   handleClick?: (event: ThreeEvent<MouseEvent>) => void;
 };
+
+// Standard card dimensions
+// Width: 2.5 in | 63.5 mm
+// Height: 3.5 in | 88.9 mm
+// Depth: 2mm
+// Radius: 3.5mm
+const CardGeometry = RoundedBoxFlat(6.35, 8.89, 0.1, 0.35, 4);
 
 export default function CardMesh({ card, spring, handleClick }: CardMeshProps) {
   const isAnimating = useRef(false);
