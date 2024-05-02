@@ -1,9 +1,9 @@
 "use client";
 
-import { Canvas, useThree } from "@react-three/fiber";
+import { Canvas as ThreeCanvas, useThree } from "@react-three/fiber";
 import { Perf } from "r3f-perf";
 
-import TableView from "@/game/Views/TableView";
+import { BlackjackScene } from "@/game/Scenes/BlackjackScene";
 
 function Helpers() {
   const camera = useThree((state) => state.camera);
@@ -18,19 +18,19 @@ function Helpers() {
   );
 }
 
-export default function CardShow() {
+export function Canvas() {
   return (
     <div id="canvas-container" className="w-screen h-screen">
-      <Canvas
+      <ThreeCanvas
         frameloop="demand"
         dpr={[1, 1.5]}
         gl={{ sortObjects: false, antialias: true }}
         flat
       >
-        <TableView />
+        <BlackjackScene />
 
         {/* <Helpers /> */}
-      </Canvas>
+      </ThreeCanvas>
     </div>
   );
 }

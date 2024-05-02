@@ -1,5 +1,5 @@
-import Casino from "@/game/Scenes/Casino";
+import { Canvas } from "@/game/Canvas";
 
 export default function Page() {
-  return <Casino />;
+  return <Canvas />;
 }

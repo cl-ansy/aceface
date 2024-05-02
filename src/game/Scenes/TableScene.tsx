@@ -4,10 +4,10 @@ import { Suspense } from "react";
 import { atom, useAtom, PrimitiveAtom } from "jotai";
 import { ThreeEvent } from "@react-three/fiber";
 
+import LoadingProgress from "@/game/Loaders/LoadingProgress";
 import TableCamera from "@/game/Cameras/TableCamera";
 import TableControls from "@/game/Controls/TableControls";
 import TableLighting from "@/game/Lighting/TableLighting";
-import LoadingProgress from "@/game/Loaders/LoadingProgress";
 import TableMesh from "@/game/Meshes/TableMesh";
 import CardMesh from "@/game/Meshes/CardMesh";
 
@@ -53,7 +53,7 @@ const backAtom = atom("Back");
 const cardsAtom = atom<PrimitiveAtom<string>[]>([]);
 const springsAtom = atom<any>([]);
 
-export default function Table() {
+export function TableGame() {
   const [springs, setSprings] = useAtom(springsAtom);
   const [cards, setCards] = useAtom(cardsAtom);
 
@@ -70,20 +70,28 @@ export default function Table() {
 
   return (
     <>
+      <CardMesh
+        card={backAtom}
+        spring={DEFAULT_SPRING}
+        handleClick={onDeckClick}
+      />
+      {cards.map((card, i) => (
+        <CardMesh key={i} card={card} spring={springs[i]} />
+      ))}
+    </>
+  );
+}
+
+export function TableScene() {
+  return (
+    <>
       <TableCamera />
       <TableControls />
       <TableLighting />
 
       <Suspense fallback={<LoadingProgress />}>
         <TableMesh />
-        <CardMesh
-          card={backAtom}
-          spring={DEFAULT_SPRING}
-          handleClick={onDeckClick}
-        />
-        {cards.map((card, i) => (
-          <CardMesh key={i} card={card} spring={springs[i]} />
-        ))}
+        <TableGame />
       </Suspense>
     </>
   );
