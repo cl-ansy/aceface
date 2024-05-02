@@ -4,7 +4,6 @@ export default function TableMesh() {
   let glb = useGLTF("/assets/table/Blackjack_Table.glb");
   return (
     <primitive
-      rotation-x={Math.PI / 2}
       rotation-y={-Math.PI / 2}
       position={[0, 0, 0]}
       scale={2}
@@ -12,5 +11,3 @@ export default function TableMesh() {
     />
   );
 }
-
-useGLTF.preload("/assets/table/Blackjack_Table.glb");
