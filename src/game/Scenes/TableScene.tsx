@@ -41,7 +41,7 @@ const getSpring = (cardIdx: number) => {
       },
       {
         positionX: randomInRange(-2, 2),
-        positionY: TABLEHEIGHT,
+        positionY: TABLEHEIGHT + cardIdx * 0.1,
         positionZ: randomInRange(24, 26),
         rotationY: randomInRange(0, 0.5 - (cardIdx % 2)),
       },
@@ -49,7 +49,7 @@ const getSpring = (cardIdx: number) => {
   };
 };
 
-const backAtom = atom("BACK");
+const backAtom = atom("JOKER");
 const cardsAtom = atom<PrimitiveAtom<string>[]>([]);
 const springsAtom = atom<any>([]);
 

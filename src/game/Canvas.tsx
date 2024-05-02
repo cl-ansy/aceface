@@ -25,7 +25,6 @@ export function Canvas() {
         frameloop="demand"
         dpr={[1, 1.5]}
         gl={{ sortObjects: false, antialias: true }}
-        flat
       >
         <BlackjackScene />
         {/* <Helpers /> */}
