@@ -47,6 +47,8 @@ export default function TableControls(props: any) {
     currentCam?.addEventListener("controlend", update);
     currentCam?.addEventListener("transitionstart", update);
     currentCam?.addEventListener("update", update);
+    currentCam?.addEventListener("wake", update);
+    currentCam?.addEventListener("rest", update);
 
     return () => {
       currentCam?.removeAllEventListeners();
