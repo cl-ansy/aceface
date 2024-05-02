@@ -6,7 +6,6 @@ export default function TableMesh() {
     <primitive
       rotation-y={-Math.PI / 2}
       position={[0, 0, 0]}
-      scale={2}
       object={glb.scene}
     />
   );

@@ -73,7 +73,6 @@ export default function CardMesh({ card, spring, handleClick }: CardMeshProps) {
       rotation-y={rotationY}
       rotation-z={rotationZ}
       geometry={CardGeometry}
-      scale={3}
     >
       <meshPhongMaterial
         attach="material-0"

@@ -14,12 +14,12 @@ import CardMesh from "@/game/Meshes/CardMesh";
 import { degreesToRadians, randomInRange } from "@/lib/utils";
 import { DECK } from "@/lib/constants";
 
-const TABLEHEIGHT = 190;
+const TABLEHEIGHT = 95;
 const DEFAULT_SPRING = {
   from: {
-    positionX: 115,
+    positionX: 60,
     positionY: TABLEHEIGHT,
-    positionZ: -90,
+    positionZ: -45,
     rotationX: degreesToRadians(90),
     rotationY: 0,
     rotationZ: degreesToRadians(-10),
@@ -34,15 +34,15 @@ const getSpring = (cardIdx: number) => {
     ...DEFAULT_SPRING,
     to: [
       {
-        positionX: 80,
-        positionY: TABLEHEIGHT + 15,
-        positionZ: -80,
+        positionX: 40,
+        positionY: TABLEHEIGHT + 5,
+        positionZ: -40,
         rotationY: degreesToRadians(-180),
       },
       {
-        positionX: randomInRange(-5, 5),
+        positionX: randomInRange(-2, 2),
         positionY: TABLEHEIGHT,
-        positionZ: randomInRange(48, 52),
+        positionZ: randomInRange(24, 26),
         rotationZ: randomInRange(0, 0.5 - (cardIdx % 2)),
       },
     ],
