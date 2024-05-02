@@ -9,8 +9,7 @@ import TableCamera from "@/game/Cameras/TableCamera";
 import TableControls from "@/game/Controls/TableControls";
 import TableLighting from "@/game/Lighting/TableLighting";
 import TableMesh from "@/game/Meshes/TableMesh";
-import CardMesh from "@/game/Meshes/CardMesh";
-import { CardInstances } from "@/game/Meshes/CardInstances";
+import CardSpring from "@/game/Meshes/CardSpring";
 
 import { degreesToRadians, randomInRange } from "@/lib/utils";
 import { DECK } from "@/game/constants";
@@ -21,8 +20,9 @@ const DEFAULT_SPRING = {
     positionX: 60,
     positionY: TABLEHEIGHT,
     positionZ: -45,
-    rotationY: degreesToRadians(10),
-    rotationZ: degreesToRadians(270),
+    rotationX: degreesToRadians(90),
+    rotationY: 0,
+    rotationZ: degreesToRadians(-10),
   },
   config: {
     duration: 300,
@@ -37,19 +37,19 @@ const getSpring = (cardIdx: number) => {
         positionX: 40,
         positionY: TABLEHEIGHT + 5,
         positionZ: -40,
-        rotationZ: degreesToRadians(90),
+        rotationY: degreesToRadians(-180),
       },
       {
         positionX: randomInRange(-2, 2),
-        positionY: TABLEHEIGHT + cardIdx * 0.1,
+        positionY: TABLEHEIGHT,
         positionZ: randomInRange(24, 26),
-        rotationY: randomInRange(0, 0.5 - (cardIdx % 2)),
+        rotationZ: randomInRange(0, 0.5 - (cardIdx % 2)),
       },
     ],
   };
 };
 
-const backAtom = atom("JOKER");
+const backAtom = atom("Back");
 const cardsAtom = atom<PrimitiveAtom<string>[]>([]);
 const springsAtom = atom<any>([]);
 
@@ -70,13 +70,13 @@ export function TableGame() {
 
   return (
     <>
-      <CardMesh
+      <CardSpring
         card={backAtom}
         spring={DEFAULT_SPRING}
         handleClick={onDeckClick}
       />
       {cards.map((card, i) => (
-        <CardMesh key={i} card={card} spring={springs[i]} />
+        <CardSpring key={i} card={card} spring={springs[i]} />
       ))}
     </>
   );
@@ -91,9 +91,7 @@ export function TableScene() {
 
       <Suspense fallback={<LoadingProgress />}>
         <TableMesh />
-        <CardInstances>
-          <TableGame />
-        </CardInstances>
+        <TableGame />
       </Suspense>
     </>
   );

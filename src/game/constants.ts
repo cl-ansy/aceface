@@ -24,4 +24,4 @@ export type Card = {
 };
 
 export const DECK = (() =>
-  SUITS.flatMap((suit) => RANKS.map((rank) => `${suit}${rank}`)))();
+  SUITS.flatMap((suit) => RANKS.map((rank) => `${rank}${suit}`)))();

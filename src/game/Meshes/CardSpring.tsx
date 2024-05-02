@@ -12,7 +12,7 @@ import {
 } from "@react-spring/three";
 import { PrimitiveAtom } from "jotai";
 
-import * as Cards from "@/game/Meshes/Cards";
+import Card from "@/game/Meshes/Vector/Card";
 
 type CardSpringValues = SpringValues<{
   positionX?: number;
@@ -29,7 +29,7 @@ type CardSpring = {
   config?: SpringConfig;
 };
 
-type CardMeshProps = {
+type CardSpringProps = {
   card: PrimitiveAtom<string>;
   spring: CardSpring;
   handleClick?: (event: ThreeEvent<MouseEvent>) => void;
@@ -40,7 +40,11 @@ type CardMeshProps = {
 // Height: 3.5 in | 88.9 mm
 // Depth: 2mm
 // Radius: 3.5mm
-export default function CardMesh({ card, spring, handleClick }: CardMeshProps) {
+export default function CardSpring({
+  card,
+  spring,
+  handleClick,
+}: CardSpringProps) {
   const isAnimating = useRef(false);
   const cardName = useAtomValue(card);
   const { invalidate } = useThree();
@@ -57,10 +61,9 @@ export default function CardMesh({ card, spring, handleClick }: CardMeshProps) {
 
   useFrame(() => isAnimating.current && invalidate());
 
-  const CurrentCard = Cards[cardName as keyof typeof Cards];
-
   return (
-    <CurrentCard
+    <Card
+      name={cardName}
       onClick={handleClick}
       position-x={positionX}
       position-y={positionY}
@@ -68,7 +71,6 @@ export default function CardMesh({ card, spring, handleClick }: CardMeshProps) {
       rotation-x={rotationX}
       rotation-y={rotationY}
       rotation-z={rotationZ}
-      scale={120}
     />
   );
 }

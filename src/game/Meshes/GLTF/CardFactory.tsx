@@ -1,9 +1,8 @@
 // @ts-nocheck
 import { useContext } from "react";
-import { useGLTF } from "@react-three/drei";
 import { animated } from "@react-spring/three";
 
-import { ModelContext } from "@/game/Meshes/CardInstances";
+import { ModelContext } from "@/game/Meshes/GLTF/CardInstances";
 
 export function BACK(props) {
   const instances = useContext(ModelContext);
@@ -544,5 +543,3 @@ export function S2(props) {
     </animated.group>
   );
 }
-
-useGLTF.preload("/assets/models/cards/Cards.glb");

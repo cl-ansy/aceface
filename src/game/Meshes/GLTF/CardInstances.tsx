@@ -1,15 +1,17 @@
 import React, { useMemo, createContext } from "react";
 import { useGLTF, Merged } from "@react-three/drei";
 
+useGLTF.preload("/assets/models/cards/gltf/Cards.glb");
+
 export const ModelContext = createContext({});
 
-export function CardInstances({
+export function CardInstanceProvider({
   children,
   ...props
 }: {
   children: React.ReactNode;
 }) {
-  const { nodes } = useGLTF("/assets/models/cards/Cards.glb");
+  const { nodes } = useGLTF("/assets/models/cards/gltf/Cards.glb");
 
   const instances = useMemo(
     () => ({
