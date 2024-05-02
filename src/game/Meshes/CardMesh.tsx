@@ -1,4 +1,5 @@
-import "@/game/Loaders/AssetLoader";
+import "@/game/Loaders/CardPreloader";
+
 import { useRef, useMemo, useEffect } from "react";
 import { useAtomValue } from "jotai";
 import { ThreeEvent, useFrame, useThree } from "@react-three/fiber";

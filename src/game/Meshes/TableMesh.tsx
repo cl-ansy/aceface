@@ -11,3 +11,5 @@ export default function TableMesh() {
     />
   );
 }
+
+useGLTF.preload("/assets/table/Blackjack_Table.glb");
