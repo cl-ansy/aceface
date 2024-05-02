@@ -125,7 +125,9 @@ export function CardInstances({
   return (
     <Merged meshes={instances} {...props}>
       {(instances: {}) => (
-        <ModelContext.Provider value={instances} children={children} />
+        <ModelContext.Provider value={instances}>
+          {children}
+        </ModelContext.Provider>
       )}
     </Merged>
   );
