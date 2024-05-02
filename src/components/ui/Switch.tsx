@@ -19,7 +19,8 @@ const Switch = forwardRef<
       className,
     )}
     {...props}
-    ref={ref}>
+    ref={ref}
+  >
     <SwitchPrimitives.Thumb
       className={cn(
         `pointer-events-none block h-4 w-4 rounded-full border-2 border-black bg-white

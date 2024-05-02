@@ -14,7 +14,8 @@ export default function Badge({
       className={cn(
         "w-min rounded-base border-2 border-black bg-main px-2.5 py-0.5 text-sm font-base",
         className,
-      )}>
+      )}
+    >
       {text}
     </div>
   );

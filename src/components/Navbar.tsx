@@ -16,7 +16,8 @@ function Navbar() {
   return (
     <nav
       className="m500:h-16 pointer-events-none fixed left-0 top-0 z-10 mx-auto flex h-20 w-full
-        items-center px-5">
+        items-center px-5"
+    >
       <div className="mx-auto flex w-[1252px] max-w-full items-center justify-between px-12">
         <div className="m400:flex-1 m400:pl-5 flex items-center gap-10">
           <Link className="m500:text-xl text-4xl font-bold" href={"/"}>

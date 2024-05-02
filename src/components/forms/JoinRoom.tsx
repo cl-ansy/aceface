@@ -13,7 +13,8 @@ export default function JoinRoom() {
     <form
       onSubmit={handleSubmit}
       className="flex w-min items-center rounded-base border-2 border-black font-base shadow-base"
-      role="form">
+      role="form"
+    >
       <input
         className="w-[30ch] rounded-base p-[10px] outline-none"
         type="text"
@@ -28,7 +29,8 @@ export default function JoinRoom() {
       <button
         className="rounded-e-[5px] border-l-2 border-black bg-main p-[10px] px-5"
         type="submit"
-        aria-label="Join">
+        aria-label="Join"
+      >
         Join
       </button>
     </form>

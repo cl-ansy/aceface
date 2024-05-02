@@ -72,7 +72,8 @@ export default function CardMesh({ card, spring, handleClick }: CardMeshProps) {
       rotation-x={rotationX}
       rotation-y={rotationY}
       rotation-z={rotationZ}
-      geometry={CardGeometry}>
+      geometry={CardGeometry}
+    >
       <meshPhongMaterial
         attach="material-0"
         map={cardTexture}

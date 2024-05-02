@@ -37,7 +37,8 @@ export function AuthDialog() {
               <Button
                 onClick={() => setIsLogin(false)}
                 variant="link"
-                size="inline">
+                size="inline"
+              >
                 Create an account
               </Button>
             </DialogFooter>
@@ -57,7 +58,8 @@ export function AuthDialog() {
               <Button
                 onClick={() => setIsLogin(true)}
                 variant="link"
-                size="inline">
+                size="inline"
+              >
                 Log in
               </Button>
             </DialogFooter>
