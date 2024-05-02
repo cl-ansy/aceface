@@ -22,7 +22,7 @@ function Spotlight() {
 export default function TableLighting() {
   return (
     <>
-      <Stage intensity={1} />
+      <Stage intensity={-5} />
       {/* <Spotlight />
       <ambientLight intensity={1} /> */}
     </>

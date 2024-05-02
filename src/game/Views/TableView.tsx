@@ -1,9 +1,6 @@
 import { atom, useAtom, PrimitiveAtom } from "jotai";
 import { ThreeEvent } from "@react-three/fiber";
 
-import TableCamera from "@/game/Cameras/TableCamera";
-import TableControls from "@/game/Controls/TableControls";
-import TableLighting from "@/game/Lighting/TableLighting";
 import TableMesh from "@/game/Meshes/TableMesh";
 import CardMesh from "@/game/Meshes/CardMesh";
 
@@ -13,12 +10,12 @@ import { DECK } from "@/lib/constants";
 const TABLEHEIGHT = 190;
 const DEFAULT_SPRING = {
   from: {
-    positionX: 125,
+    positionX: 115,
     positionY: TABLEHEIGHT,
-    positionZ: -100,
+    positionZ: -90,
     rotationX: degreesToRadians(90),
     rotationY: 0,
-    rotationZ: degreesToRadians(10),
+    rotationZ: degreesToRadians(-10),
   },
   config: {
     duration: 300,
@@ -30,9 +27,9 @@ const getSpring = (cardIdx: number) => {
     ...DEFAULT_SPRING,
     to: [
       {
-        positionX: 90,
-        positionY: TABLEHEIGHT + 25,
-        positionZ: -90,
+        positionX: 80,
+        positionY: TABLEHEIGHT + 15,
+        positionZ: -80,
         rotationY: degreesToRadians(-180),
       },
       {
@@ -66,9 +63,6 @@ export default function Table() {
 
   return (
     <>
-      <TableCamera />
-      <TableControls />
-      <TableLighting />
       <TableMesh />
       <CardMesh
         card={backAtom}

@@ -7,6 +7,9 @@ import { Perf } from "r3f-perf";
 import "@/game/Loaders/AssetLoader";
 import LoadingProgress from "@/game/Loaders/LoadingProgress";
 
+import TableCamera from "@/game/Cameras/TableCamera";
+import TableControls from "@/game/Controls/TableControls";
+import TableLighting from "@/game/Lighting/TableLighting";
 import TableView from "@/game/Views/TableView";
 
 function Helpers() {
@@ -15,7 +18,7 @@ function Helpers() {
     <>
       {/* <arrowHelper /> */}
       <axesHelper args={[1000]} />
-      <cameraHelper args={[camera]} />
+      {/* <cameraHelper args={[camera]} /> */}
       {/* <gridHelper args={[2000, 40]} /> */}
       <Perf position="top-left" />
     </>
@@ -29,15 +32,19 @@ export default function CardShow() {
         // frameloop="demand"
         dpr={[1, 1.5]}
         gl={{ sortObjects: false, antialias: true }}
-        // flat
+        flat
       >
         <color attach="background" args={["#daf5f0"]} />
+
+        <TableCamera />
+        <TableControls />
+        <TableLighting />
 
         <Suspense fallback={<LoadingProgress />}>
           <TableView />
         </Suspense>
 
-        <Helpers />
+        {/* <Helpers /> */}
       </Canvas>
     </div>
   );
