@@ -1,10 +1,10 @@
 import { useRef } from "react";
-import { SpotLightHelper } from "three";
-import { useHelper, Stars, Stage } from "@react-three/drei";
+// import { SpotLightHelper } from "three";
+// import { useHelper } from "@react-three/drei";
 
 function Spotlight() {
   const spotlightRef = useRef<any>();
-  useHelper(spotlightRef, SpotLightHelper);
+  // useHelper(spotlightRef, SpotLightHelper);
 
   return (
     <spotLight
