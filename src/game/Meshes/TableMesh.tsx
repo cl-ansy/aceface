@@ -1,7 +1,7 @@
 import { useGLTF } from "@react-three/drei";
 
 export default function TableMesh() {
-  let glb = useGLTF("/assets/table/Blackjack_Table.glb");
+  let glb = useGLTF("/assets/models/table/Blackjack_Table.glb");
   return (
     <primitive
       rotation-y={-Math.PI / 2}
@@ -11,4 +11,4 @@ export default function TableMesh() {
   );
 }
 
-useGLTF.preload("/assets/table/Blackjack_Table.glb");
+useGLTF.preload("/assets/models/table/Blackjack_Table.glb");

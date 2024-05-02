@@ -47,8 +47,8 @@ const CardGeometry = RoundedBoxFlat(6.35, 8.89, 0.1, 0.35, 4);
 export default function CardMesh({ card, spring, handleClick }: CardMeshProps) {
   const isAnimating = useRef(false);
   const cardName = useAtomValue(card);
-  const cardTexture = useTexture(`/assets/cards/vector/${cardName}.svg`);
-  const backTexture = useTexture("/assets/cards/vector/Back.svg");
+  const cardTexture = useTexture(`/assets/models/cards/vector/${cardName}.svg`);
+  const backTexture = useTexture("/assets/models/cards/vector/Back.svg");
   const { invalidate } = useThree();
 
   const [{ positionX, positionY, positionZ, rotationX, rotationY, rotationZ }] =
