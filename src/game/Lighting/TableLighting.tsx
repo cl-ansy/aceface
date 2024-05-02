@@ -26,7 +26,7 @@ function HemisphereLight() {
 }
 
 function DirectionalLight() {
-  return <directionalLight args={[0xffffff, 0.5]} />;
+  return <directionalLight args={["white", 0.5]} />;
 }
 
 export default function TableLighting() {

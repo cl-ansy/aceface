@@ -1,4 +1,4 @@
-import { useTexture, useGLTF } from "@react-three/drei";
+import { useTexture } from "@react-three/drei";
 
 useTexture.preload("/assets/models/cards/vector/2H.svg");
 useTexture.preload("/assets/models/cards/vector/3H.svg");
