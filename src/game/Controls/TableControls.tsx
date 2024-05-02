@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { extend, useFrame, useThree } from "@react-three/fiber";
+import { extend, invalidate, useFrame, useThree } from "@react-three/fiber";
 import CameraControls from "camera-controls";
 
 import {
@@ -36,7 +36,21 @@ export default function TableControls(props: any) {
   const gl = useThree((state) => state.gl);
 
   useEffect(() => {
-    ref.current?.setLookAt(0, 350, 125, 0, 100, -50);
+    const currentCam = ref.current;
+
+    currentCam?.setLookAt(0, 350, 125, 0, 100, -50);
+
+    const update = () => invalidate();
+
+    currentCam?.addEventListener("controlstart", update);
+    currentCam?.addEventListener("control", update);
+    currentCam?.addEventListener("controlend", update);
+    currentCam?.addEventListener("transitionstart", update);
+    currentCam?.addEventListener("update", update);
+
+    return () => {
+      currentCam?.removeAllEventListeners();
+    };
   });
 
   useFrame((_, delta) => ref.current?.update(delta));
