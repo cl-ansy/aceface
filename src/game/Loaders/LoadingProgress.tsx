@@ -28,7 +28,7 @@ export default function LoadingProgress() {
   const { progress } = useProgress();
 
   return (
-    <Html>
+    <Html center={true} position={[0, 200, 0]}>
       <Progress value={progress} className="w-40" />
     </Html>
   );

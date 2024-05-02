@@ -28,7 +28,6 @@ export function Canvas() {
         flat
       >
         <BlackjackScene />
-
         {/* <Helpers /> */}
       </ThreeCanvas>
     </div>
