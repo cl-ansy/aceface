@@ -6,7 +6,7 @@ export function RoundedBoxFlat(
   d: number, // depth
   r: number, // radius
   s: number, // smoothness
-  q?: number // quadrant
+  q?: number, // quadrant
 ) {
   let qu = q || 1; // qu: start quadrant regarding u, optional
   const pi = Math.PI;
@@ -22,7 +22,7 @@ export function RoundedBoxFlat(
   geometry.setIndex(new BufferAttribute(new Uint32Array(indices), 1));
   geometry.setAttribute(
     "position",
-    new BufferAttribute(new Float32Array(positions), 3)
+    new BufferAttribute(new Float32Array(positions), 3),
   );
   geometry.setAttribute("uv", new BufferAttribute(new Float32Array(uvs), 2));
 

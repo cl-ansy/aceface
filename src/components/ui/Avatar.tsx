@@ -18,10 +18,10 @@ export default function Avatar({
         backgroundImage: cn({ [`url(${imageUrl})`]: false }),
       }}
       className={cn(
-        "flex justify-center items-center h-8 w-8 font-semibold rounded-full border-2 border-black bg-white bg-cover bg-center",
-        className
-      )}
-    >
+        `flex h-8 w-8 items-center justify-center rounded-full border-2 border-black
+        bg-white bg-cover bg-center font-semibold`,
+        className,
+      )}>
       {children}
     </div>
   );

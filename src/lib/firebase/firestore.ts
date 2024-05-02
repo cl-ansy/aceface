@@ -4,7 +4,7 @@ import { firestore } from "@/lib/firebase/firebase";
 
 export const getWalletByUserId = (
   userUid: string | undefined,
-  cb: (wallet: DocumentData | undefined) => void
+  cb: (wallet: DocumentData | undefined) => void,
 ) => {
   if (!userUid) return;
 

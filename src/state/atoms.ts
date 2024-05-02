@@ -29,11 +29,11 @@ export const clearAuthAtom = atom(null, (get, set) => {
 });
 
 export const userUidAtom = atom<string | undefined>(
-  (get) => get(authAtom)?.uid
+  (get) => get(authAtom)?.uid,
 );
 
 export const displayNameAtom = atom<string | undefined>(
-  (get) => get(authAtom)?.displayName || "Anonymous"
+  (get) => get(authAtom)?.displayName || "Anonymous",
 );
 
 // Wallet
@@ -50,11 +50,11 @@ export const replaceWalletUnsubAtom = atom(
     const unsub = get(walletUnsubAtom);
     if (unsub.fn) unsub.fn();
     set(walletUnsubAtom, newUnsub);
-  }
+  },
 );
 
 export const balanceAtom = focusAtom(walletAtom, (optic) =>
-  optic.prop("balance")
+  optic.prop("balance"),
 );
 
 // Subscribers

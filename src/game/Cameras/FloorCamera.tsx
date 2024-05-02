@@ -8,8 +8,7 @@ export default function FloorCamera({ children }: { children?: ReactNode }) {
       near={0}
       far={200}
       position={[0, 0, 200]}
-      makeDefault
-    >
+      makeDefault>
       {children}
     </OrthographicCamera>
   );

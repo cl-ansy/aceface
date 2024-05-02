@@ -14,7 +14,7 @@ export function onAuthStateChanged(cb: NextOrObserver<User>) {
 
 export async function createUserWithEmailAndPassword(
   email: string,
-  password: string
+  password: string,
 ) {
   try {
     await _createUserWithEmailAndPassword(auth, email, password);

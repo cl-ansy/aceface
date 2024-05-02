@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-bg color-main">
+    <html lang="en" className="color-main bg-bg">
       <body className={inter.className}>
         {/*
           Do not remove this Provider. It is important to store jotai state here instead of an

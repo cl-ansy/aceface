@@ -17,18 +17,18 @@ const Form = FormProvider;
 
 type FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 > = {
   name: TName;
 };
 
 const FormFieldContext = createContext<FormFieldContextValue>(
-  {} as FormFieldContextValue
+  {} as FormFieldContextValue,
 );
 
 const FormField = <
   TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >({
   ...props
 }: ControllerProps<TFieldValues, TName>) => {
@@ -67,7 +67,7 @@ type FormItemContextValue = {
 };
 
 const FormItemContext = createContext<FormItemContextValue>(
-  {} as FormItemContextValue
+  {} as FormItemContextValue,
 );
 
 const FormItem = forwardRef<
@@ -93,7 +93,7 @@ const FormLabel = forwardRef<
   return (
     <Label
       ref={ref}
-      className={cn(error && "text-red-500 font-base", className)}
+      className={cn(error && "font-base text-red-500", className)}
       htmlFor={formItemId}
       {...props}
     />
@@ -157,8 +157,7 @@ const FormMessage = forwardRef<
       ref={ref}
       id={formMessageId}
       className={cn("text-sm font-base text-red-500", className)}
-      {...props}
-    >
+      {...props}>
       {body}
     </p>
   );

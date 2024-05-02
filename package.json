@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "npx prettier . --write",
     "deploy": "firebase deploy --only hosting --project aceface-49d4b --debug"
   },
   "dependencies": {

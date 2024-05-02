@@ -20,13 +20,12 @@ function Helpers() {
 
 export function Canvas() {
   return (
-    <div id="canvas-container" className="w-screen h-screen">
+    <div id="canvas-container" className="h-screen w-screen">
       <ThreeCanvas
         frameloop="demand"
         dpr={[1, 1.5]}
         gl={{ sortObjects: false, antialias: true }}
-        flat
-      >
+        flat>
         <BlackjackScene />
         {/* <Helpers /> */}
       </ThreeCanvas>
