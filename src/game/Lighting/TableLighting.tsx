@@ -4,7 +4,7 @@ import { useHelper } from "@react-three/drei";
 
 export function Spotlight() {
   const spotlightRef = useRef<any>();
-  useHelper(spotlightRef, SpotLightHelper);
+  // useHelper(spotlightRef, SpotLightHelper);
 
   return (
     <spotLight

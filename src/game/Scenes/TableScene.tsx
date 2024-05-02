@@ -12,7 +12,7 @@ import TableMesh from "@/game/Meshes/TableMesh";
 import CardMesh from "@/game/Meshes/CardMesh";
 
 import { degreesToRadians, randomInRange } from "@/lib/utils";
-import { DECK } from "@/lib/constants";
+import { DECK } from "@/game/constants";
 
 const TABLEHEIGHT = 95;
 const DEFAULT_SPRING = {
