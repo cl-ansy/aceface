@@ -1,4 +1,4 @@
-import * as THREE from "three";
+import { BufferGeometry, BufferAttribute } from "three";
 
 // Standard card dimensions
 // Width: 2.5 in | 63.5 mm
@@ -25,16 +25,13 @@ export function RoundedBoxFlat(
   makeFronts(s, -1, 4 * (s + 3) + 1); // smoothness, back is -1, start index center back
   makeFrame(s, 2 * (4 * (s + 3) + 1), 1, 4 * (s + 3) + 2); // smoothness, start index framing ,start index front, start index back
 
-  const geometry = new THREE.BufferGeometry();
-  geometry.setIndex(new THREE.BufferAttribute(new Uint32Array(indices), 1));
+  const geometry = new BufferGeometry();
+  geometry.setIndex(new BufferAttribute(new Uint32Array(indices), 1));
   geometry.setAttribute(
     "position",
-    new THREE.BufferAttribute(new Float32Array(positions), 3)
+    new BufferAttribute(new Float32Array(positions), 3)
   );
-  geometry.setAttribute(
-    "uv",
-    new THREE.BufferAttribute(new Float32Array(uvs), 2)
-  );
+  geometry.setAttribute("uv", new BufferAttribute(new Float32Array(uvs), 2));
 
   // add multimaterial groups for front, back, framing
   const vtc = 4 * (s + 2) * 3;
