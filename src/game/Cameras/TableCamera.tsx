@@ -10,7 +10,7 @@ export default function FloorCamera({
       zoom={5}
       near={0.1}
       far={1000}
-      position={[0, -30, 300]}
+      position={[0, 250, 100]}
       makeDefault
     >
       {children}

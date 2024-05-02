@@ -6,7 +6,7 @@ export default function TableControls() {
       makeDefault
       minZoom={0.1}
       maxZoom={20}
-      target={[0, 50, 100]}
+      target={[0, 100, 100]}
     />
   );
 }

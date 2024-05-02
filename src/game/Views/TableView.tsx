@@ -14,12 +14,12 @@ const TABLEHEIGHT = 190;
 const DEFAULT_SPRING = {
   from: {
     positionX: 125,
-    positionY: 100,
-    positionZ: TABLEHEIGHT,
-    rotationY: degreesToRadians(-180),
-    rotationZ: degreesToRadians(-10),
+    positionY: TABLEHEIGHT,
+    positionZ: -100,
+    rotationX: degreesToRadians(90),
+    rotationY: 0,
+    rotationZ: degreesToRadians(10),
   },
-  delay: 0,
   config: {
     duration: 300,
   },
@@ -31,14 +31,14 @@ const getSpring = (cardIdx: number) => {
     to: [
       {
         positionX: 90,
-        positionY: 90,
-        positionZ: TABLEHEIGHT + 25,
-        rotationY: 0,
+        positionY: TABLEHEIGHT + 25,
+        positionZ: -90,
+        rotationY: degreesToRadians(-180),
       },
       {
         positionX: randomInRange(-5, 5),
-        positionY: randomInRange(-18, -22),
-        positionZ: TABLEHEIGHT,
+        positionY: TABLEHEIGHT,
+        positionZ: randomInRange(48, 52),
         rotationZ: randomInRange(0, 0.5 - (cardIdx % 2)),
       },
     ],

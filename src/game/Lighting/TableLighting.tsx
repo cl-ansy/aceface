@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { SpotLightHelper } from "three";
-import { useHelper } from "@react-three/drei";
+import { useHelper, Stars, Stage } from "@react-three/drei";
 
 function Spotlight() {
   const spotlightRef = useRef<any>();
@@ -9,11 +9,11 @@ function Spotlight() {
   return (
     <spotLight
       ref={spotlightRef}
-      position={[0, -30, 300]}
-      rotation={[2, 0, 0]}
-      intensity={350}
-      decay={1}
-      angle={2}
+      position={[0, 0, 400]}
+      rotation={[0, 0, 0]}
+      intensity={300}
+      decay={1.1}
+      angle={10}
       castShadow
     />
   );
@@ -22,8 +22,9 @@ function Spotlight() {
 export default function TableLighting() {
   return (
     <>
-      <Spotlight />
-      {/* <ambientLight intensity={3} /> */}
+      <Stage intensity={1} />
+      {/* <Spotlight />
+      <ambientLight intensity={1} /> */}
     </>
   );
 }
