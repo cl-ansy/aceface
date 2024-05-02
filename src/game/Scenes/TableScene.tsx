@@ -10,6 +10,7 @@ import TableControls from "@/game/Controls/TableControls";
 import TableLighting from "@/game/Lighting/TableLighting";
 import TableMesh from "@/game/Meshes/TableMesh";
 import CardMesh from "@/game/Meshes/CardMesh";
+import { CardInstances } from "@/game/Meshes/CardInstances";
 
 import { degreesToRadians, randomInRange } from "@/lib/utils";
 import { DECK } from "@/game/constants";
@@ -20,9 +21,8 @@ const DEFAULT_SPRING = {
     positionX: 60,
     positionY: TABLEHEIGHT,
     positionZ: -45,
-    rotationX: degreesToRadians(90),
-    rotationY: 0,
-    rotationZ: degreesToRadians(-10),
+    rotationY: degreesToRadians(10),
+    rotationZ: degreesToRadians(270),
   },
   config: {
     duration: 300,
@@ -37,19 +37,19 @@ const getSpring = (cardIdx: number) => {
         positionX: 40,
         positionY: TABLEHEIGHT + 5,
         positionZ: -40,
-        rotationY: degreesToRadians(-180),
+        rotationZ: degreesToRadians(90),
       },
       {
         positionX: randomInRange(-2, 2),
         positionY: TABLEHEIGHT,
         positionZ: randomInRange(24, 26),
-        rotationZ: randomInRange(0, 0.5 - (cardIdx % 2)),
+        rotationY: randomInRange(0, 0.5 - (cardIdx % 2)),
       },
     ],
   };
 };
 
-const backAtom = atom("Back");
+const backAtom = atom("BACK");
 const cardsAtom = atom<PrimitiveAtom<string>[]>([]);
 const springsAtom = atom<any>([]);
 
@@ -91,7 +91,9 @@ export function TableScene() {
 
       <Suspense fallback={<LoadingProgress />}>
         <TableMesh />
-        <TableGame />
+        <CardInstances>
+          <TableGame />
+        </CardInstances>
       </Suspense>
     </>
   );
