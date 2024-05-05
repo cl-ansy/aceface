@@ -71,9 +71,6 @@ export default function CardSpring({
       rotation-x={rotationX}
       rotation-y={rotationY}
       rotation-z={rotationZ}
-      meshProps={{
-        scale: [1.8, 1, 1.8],
-      }}
     />
   );
 }

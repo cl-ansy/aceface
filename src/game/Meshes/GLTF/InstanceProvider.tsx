@@ -3,13 +3,7 @@ import type { Mesh, MeshPhysicalMaterial } from "three";
 import { useGLTF, Merged } from "@react-three/drei";
 import { a } from "@react-spring/three";
 import { GLTF } from "three-stdlib";
-import type {
-  GroupProps,
-  MeshProps,
-  Node,
-  Object3DNode,
-  Object3DProps,
-} from "@react-three/fiber";
+import type { MeshProps } from "@react-three/fiber";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -126,7 +120,12 @@ type GLTFResult = GLTF & {
   };
 };
 
-export const InstanceContext = createContext({});
+type ContextType = Record<
+  string,
+  React.ForwardRefExoticComponent<JSX.IntrinsicElements["mesh"]>
+>;
+
+export const InstanceContext = createContext({} as ContextType);
 
 export function InstanceProvider({
   children,
@@ -213,9 +212,9 @@ export function MeshInstance({
 }: {
   name: string;
   meshProps?: MeshProps;
-} & GroupProps) {
+} & JSX.IntrinsicElements["group"]) {
   const instances = useContext(InstanceContext);
-  console.log(instances);
+
   const MeshInstance = instances[
     name as keyof typeof instances
   ] as React.ElementType;

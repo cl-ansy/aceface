@@ -15,8 +15,6 @@ import { InstanceProvider } from "@/game/Meshes/GLTF/InstanceProvider";
 import { degreesToRadians, randomInRange } from "@/lib/utils";
 import { DECK } from "@/game/constants";
 
-// 1.13:1.58:0.0031
-
 const TABLEHEIGHT = 9.5;
 const DEFAULT_SPRING = {
   from: {
@@ -45,7 +43,7 @@ const getSpring = (cardIdx: number) => {
       },
       {
         positionX: randomInRange(-0.1, 0.1),
-        positionY: TABLEHEIGHT + cardIdx * 0.004,
+        positionY: TABLEHEIGHT + cardIdx * 0.001,
         positionZ: randomInRange(0.9, 1.1),
         rotationY: randomInRange(-0.2, 0.2),
       },
