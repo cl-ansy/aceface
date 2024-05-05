@@ -12,7 +12,7 @@ import {
 } from "@react-spring/three";
 import { PrimitiveAtom } from "jotai";
 
-import Card from "@/game/Meshes/Vector/Card";
+import { MeshInstance as Card } from "@/game/Meshes/GLTF/InstanceProvider";
 
 type CardSpringValues = SpringValues<{
   positionX?: number;
@@ -71,6 +71,9 @@ export default function CardSpring({
       rotation-x={rotationX}
       rotation-y={rotationY}
       rotation-z={rotationZ}
+      meshProps={{
+        scale: [1.8, 1, 1.8],
+      }}
     />
   );
 }

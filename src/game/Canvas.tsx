@@ -22,12 +22,12 @@ export function Canvas() {
   return (
     <div id="canvas-container" className="h-screen w-screen">
       <ThreeCanvas
-        frameloop="demand"
+        // frameloop="demand"
         dpr={[1, 1.5]}
         gl={{ sortObjects: false, antialias: true }}
       >
         <BlackjackScene />
-        {/* <Helpers /> */}
+        <Helpers />
       </ThreeCanvas>
     </div>
   );

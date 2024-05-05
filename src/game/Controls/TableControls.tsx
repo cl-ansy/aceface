@@ -38,7 +38,8 @@ export default function TableControls(props: any) {
   useEffect(() => {
     const currentCam = ref.current;
 
-    currentCam?.setLookAt(0, 175, 70, 0, 50, -25);
+    currentCam?.setPosition(0, 26, 12);
+    currentCam?.rotate(0, -60, false);
 
     const update = () => invalidate();
 

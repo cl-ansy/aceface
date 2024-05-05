@@ -10,21 +10,24 @@ import TableControls from "@/game/Controls/TableControls";
 import TableLighting from "@/game/Lighting/TableLighting";
 import TableMesh from "@/game/Meshes/TableMesh";
 import CardSpring from "@/game/Meshes/CardSpring";
+import { InstanceProvider } from "@/game/Meshes/GLTF/InstanceProvider";
 
 import { degreesToRadians, randomInRange } from "@/lib/utils";
 import { DECK } from "@/game/constants";
 
-const TABLEHEIGHT = 95;
+// 1.13:1.58:0.0031
+
+const TABLEHEIGHT = 9.5;
 const DEFAULT_SPRING = {
   from: {
-    positionX: 60,
+    positionX: 5.5,
     positionY: TABLEHEIGHT,
-    positionZ: -45,
-    rotationX: degreesToRadians(90),
-    rotationY: 0,
-    rotationZ: degreesToRadians(-10),
+    positionZ: -4.5,
+    rotationY: degreesToRadians(10),
+    rotationZ: degreesToRadians(180),
   },
   config: {
+    precision: 0.0001,
     duration: 300,
   },
 };
@@ -34,22 +37,23 @@ const getSpring = (cardIdx: number) => {
     ...DEFAULT_SPRING,
     to: [
       {
-        positionX: 40,
-        positionY: TABLEHEIGHT + 5,
-        positionZ: -40,
-        rotationY: degreesToRadians(-180),
+        positionX: 4,
+        positionY: TABLEHEIGHT + 2,
+        positionZ: -4,
+        rotationY: degreesToRadians(0),
+        rotationZ: degreesToRadians(0),
       },
       {
-        positionX: randomInRange(-2, 2),
-        positionY: TABLEHEIGHT,
-        positionZ: randomInRange(24, 26),
-        rotationZ: randomInRange(0, 0.5 - (cardIdx % 2)),
+        positionX: randomInRange(-0.1, 0.1),
+        positionY: TABLEHEIGHT + cardIdx * 0.004,
+        positionZ: randomInRange(0.9, 1.1),
+        rotationY: randomInRange(-0.2, 0.2),
       },
     ],
   };
 };
 
-const backAtom = atom("Back");
+const backAtom = atom("Joker");
 const cardsAtom = atom<PrimitiveAtom<string>[]>([]);
 const springsAtom = atom<any>([]);
 
@@ -90,8 +94,10 @@ export function TableScene() {
       <TableLighting />
 
       <Suspense fallback={<LoadingProgress />}>
-        <TableMesh />
-        <TableGame />
+        <InstanceProvider>
+          <TableMesh />
+          <TableGame />
+        </InstanceProvider>
       </Suspense>
     </>
   );
