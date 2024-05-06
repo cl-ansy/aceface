@@ -71,6 +71,8 @@ export default function CardSpring({
       rotation-x={rotationX}
       rotation-y={rotationY}
       rotation-z={rotationZ}
+      // TODO: Redo models with Backface Culling so we don't have to crank this.
+      scale-y={2}
     />
   );
 }

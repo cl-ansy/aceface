@@ -46,9 +46,9 @@ export default function TableControls(props: any) {
   return (
     <CameraControls
       ref={ref}
-      minZoom={100}
-      maxZoom={10}
       camera={camera}
+      minDistance={15}
+      maxDistance={200}
       {...props}
     />
   );
