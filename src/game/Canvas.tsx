@@ -7,12 +7,10 @@ import { Perf } from "r3f-perf";
 import { BlackjackScene } from "@/game/Scenes/BlackjackScene";
 
 function Helpers() {
-  const camera = useThree((state) => state.camera);
   return (
     <>
       {/* <arrowHelper /> */}
       {/* <axesHelper args={[50]} /> */}
-      <cameraHelper args={[camera]} />
       {/* <gridHelper args={[2000, 40]} /> */}
       <Perf position="top-left" />
       {/* <Stats /> */}
@@ -25,7 +23,7 @@ function Ground() {
     cellSize: 1,
     cellThickness: 1,
     cellColor: "#6f6f6f",
-    sectionSize: 5,
+    sectionSize: 10,
     sectionThickness: 1,
     sectionColor: "#9d4b4b",
     fadeDistance: 50,

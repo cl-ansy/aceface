@@ -1,26 +1,31 @@
 import { useEffect, useRef } from "react";
 import { invalidate, useFrame, useThree } from "@react-three/fiber";
 import { CameraControls } from "@react-three/drei";
+import CameraControlsPrimitive from "camera-controls";
 
 export default function TableControls(props: any) {
-  const ref = useRef<CameraControls>(null);
+  const ref = useRef<CameraControlsPrimitive>(null);
 
   const camera = useThree((state) => state.camera);
 
   useEffect(() => {
     const currentCam = ref.current;
 
-    currentCam?.setLookAt(0, 26, 12, 0, 9.5, 1);
-    // currentCam?.zoomTo(3);
+    // currentCam?.setPosition(0, 26, 9.5);
+    // currentCam?.lookInDirectionOf(0, -9.5, -1);
+    // currentCam?.setOrbitPoint(0, 9.5, 1);
 
-    // if (currentCam) {
-    //   currentCam.mouseButtons = {
-    //     left: CameraControls.ACTION.NONE,
-    //     right: CameraControls.ACTION.NONE,
-    //     wheel: CameraControls.ACTION.ZOOM,
-    //     middle: CameraControls.ACTION.ZOOM,
-    //   };
-    // }
+    currentCam?.setPosition(0, 20, 4);
+    currentCam?.setTarget(0, -1, -4);
+
+    if (currentCam) {
+      currentCam.mouseButtons = {
+        left: CameraControlsPrimitive.ACTION.NONE,
+        right: CameraControlsPrimitive.ACTION.TRUCK,
+        wheel: CameraControlsPrimitive.ACTION.DOLLY,
+        middle: CameraControlsPrimitive.ACTION.DOLLY,
+      };
+    }
 
     const update = () => invalidate();
     currentCam?.addEventListener("controlstart", update);
@@ -38,5 +43,13 @@ export default function TableControls(props: any) {
 
   useFrame((_, delta) => ref.current?.update(delta));
 
-  return <CameraControls ref={ref} camera={camera} {...props} />;
+  return (
+    <CameraControls
+      ref={ref}
+      minZoom={100}
+      maxZoom={10}
+      camera={camera}
+      {...props}
+    />
+  );
 }
