@@ -1,7 +1,8 @@
 "use client";
 
 import { Canvas as ThreeCanvas, useThree } from "@react-three/fiber";
-import { Perf } from "r3f-perf";
+import { Grid, Stats } from "@react-three/drei";
+// import { Perf } from "r3f-perf";
 
 import { BlackjackScene } from "@/game/Scenes/BlackjackScene";
 
@@ -10,12 +11,29 @@ function Helpers() {
   return (
     <>
       {/* <arrowHelper /> */}
-      <axesHelper args={[1000]} />
+      <axesHelper args={[50]} />
       {/* <cameraHelper args={[camera]} /> */}
       {/* <gridHelper args={[2000, 40]} /> */}
       {/* <Perf position="top-left" /> */}
+      <Stats />
     </>
   );
+}
+
+function Ground() {
+  const gridConfig = {
+    cellSize: 1,
+    cellThickness: 1,
+    cellColor: "#6f6f6f",
+    sectionSize: 5,
+    sectionThickness: 1,
+    sectionColor: "#9d4b4b",
+    fadeDistance: 50,
+    fadeStrength: 1,
+    followCamera: false,
+    infiniteGrid: true,
+  };
+  return <Grid position={[0, -0.01, 0]} args={[10, 10]} {...gridConfig} />;
 }
 
 export function Canvas() {
@@ -26,6 +44,7 @@ export function Canvas() {
         dpr={[1, 1.5]}
         gl={{ sortObjects: false, antialias: true }}
       >
+        <Ground />
         <BlackjackScene />
         <Helpers />
       </ThreeCanvas>
