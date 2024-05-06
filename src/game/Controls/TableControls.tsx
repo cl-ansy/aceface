@@ -1,21 +1,17 @@
 import { useEffect, useRef } from "react";
-import { extend, invalidate, useFrame, useThree } from "@react-three/fiber";
+import { invalidate, useFrame, useThree } from "@react-three/fiber";
 import { CameraControls } from "@react-three/drei";
 
 export default function TableControls(props: any) {
   const ref = useRef<CameraControls>(null);
 
   const camera = useThree((state) => state.camera);
-  const gl = useThree((state) => state.gl);
 
   useEffect(() => {
     const currentCam = ref.current;
-    // console.log(currentCam);
-    // currentCam?.setLookAt(0, 10.5, 1, 0, 9.5, 0);
-    currentCam?.zoomTo(2);
-    // currentCam?.setPosition(0, 26, 12);
-    currentCam?.setLookAt(0, 26, 12, 0, 9.5, 1.1);
-    // currentCam?.rotate(0, 30);
+
+    currentCam?.setLookAt(0, 26, 12, 0, 9.5, 1);
+    // currentCam?.zoomTo(3);
 
     // if (currentCam) {
     //   currentCam.mouseButtons = {
@@ -42,5 +38,5 @@ export default function TableControls(props: any) {
 
   useFrame((_, delta) => ref.current?.update(delta));
 
-  return <CameraControls ref={ref} {...props} />;
+  return <CameraControls ref={ref} camera={camera} {...props} />;
 }

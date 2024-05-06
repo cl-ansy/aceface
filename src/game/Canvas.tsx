@@ -2,7 +2,7 @@
 
 import { Canvas as ThreeCanvas, useThree } from "@react-three/fiber";
 import { Grid, Stats } from "@react-three/drei";
-// import { Perf } from "r3f-perf";
+import { Perf } from "r3f-perf";
 
 import { BlackjackScene } from "@/game/Scenes/BlackjackScene";
 
@@ -11,11 +11,11 @@ function Helpers() {
   return (
     <>
       {/* <arrowHelper /> */}
-      <axesHelper args={[50]} />
-      {/* <cameraHelper args={[camera]} /> */}
+      {/* <axesHelper args={[50]} /> */}
+      <cameraHelper args={[camera]} />
       {/* <gridHelper args={[2000, 40]} /> */}
-      {/* <Perf position="top-left" /> */}
-      <Stats />
+      <Perf position="top-left" />
+      {/* <Stats /> */}
     </>
   );
 }
@@ -40,7 +40,7 @@ export function Canvas() {
   return (
     <div id="canvas-container" className="h-screen w-screen">
       <ThreeCanvas
-        // frameloop="demand"
+        frameloop="demand"
         dpr={[1, 1.5]}
         gl={{ sortObjects: false, antialias: true }}
       >
