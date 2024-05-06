@@ -6,7 +6,7 @@ export default function LoadingProgress() {
   const { progress } = useProgress();
 
   return (
-    <Html center={true} position={[0, 100, 0]}>
+    <Html center={true} position={[0, 10, 0]}>
       <Progress value={progress} className="w-40" />
     </Html>
   );
