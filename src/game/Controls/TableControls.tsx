@@ -48,7 +48,7 @@ export default function TableControls(props: any) {
       ref={ref}
       camera={camera}
       minDistance={15}
-      maxDistance={200}
+      maxDistance={50}
       {...props}
     />
   );

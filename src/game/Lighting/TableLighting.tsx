@@ -9,8 +9,8 @@ export function Spotlight() {
   return (
     <spotLight
       ref={spotlightRef}
-      position={[0, 15, 0]}
-      intensity={30}
+      position={[0, 20, 10]}
+      intensity={500}
       angle={Math.PI / 2.2}
     />
   );
@@ -21,11 +21,11 @@ function AmbientLight() {
 }
 
 function HemisphereLight() {
-  return <hemisphereLight args={["white", "darkslategrey", 1]} />;
+  return <hemisphereLight args={["white", "darkslategrey", 1.5]} />;
 }
 
 function DirectionalLight() {
-  return <directionalLight position={[0, 15, -10]} intensity={1.5} />;
+  return <directionalLight position={[0, 15, 0]} intensity={3} />;
 }
 
 export default function TableLighting() {

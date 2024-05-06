@@ -8,7 +8,7 @@ export default function TableCamera(props: any) {
       // position={[0, 26, 11.5]}
       fov={50}
       near={0.01}
-      far={200}
+      far={100}
       {...props}
     />
   );
