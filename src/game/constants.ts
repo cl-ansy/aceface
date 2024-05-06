@@ -1,4 +1,6 @@
-export const TABLE_HEIGHT = 190;
+export const RENDER_PRECISION = 2;
+
+export const TABLE_HEIGHT = 9.5;
 
 export const SUITS = ["H", "S", "C", "D"];
 

@@ -38,10 +38,22 @@ export default function TableControls(props: any) {
   useEffect(() => {
     const currentCam = ref.current;
 
-    currentCam?.setPosition(0, 26, 12);
-    currentCam?.rotate(0, -60, false);
+    // currentCam?.setLookAt(0, 10.5, 1, 0, 9.5, 0);
+    currentCam?.zoomTo(2);
+    // currentCam?.setPosition(0, 26, 12);
+    currentCam?.setLookAt(0, 26, 12, 0, 9.5, 0);
+    // currentCam?.rotate(0, 30);
 
     const update = () => invalidate();
+
+    // if (currentCam) {
+    //   currentCam.mouseButtons = {
+    //     left: CameraControls.ACTION.NONE,
+    //     right: CameraControls.ACTION.NONE,
+    //     wheel: CameraControls.ACTION.ZOOM,
+    //     middle: CameraControls.ACTION.ZOOM,
+    //   };
+    // }
 
     currentCam?.addEventListener("controlstart", update);
     currentCam?.addEventListener("control", update);

@@ -13,13 +13,12 @@ import CardSpring from "@/game/Meshes/CardSpring";
 import { InstanceProvider } from "@/game/Meshes/GLTF/InstanceProvider";
 
 import { degreesToRadians, randomInRange } from "@/lib/utils";
-import { DECK } from "@/game/constants";
+import { DECK, TABLE_HEIGHT } from "@/game/constants";
 
-const TABLEHEIGHT = 9.5;
 const DEFAULT_SPRING = {
   from: {
     positionX: 5.5,
-    positionY: TABLEHEIGHT,
+    positionY: TABLE_HEIGHT,
     positionZ: -4.5,
     rotationY: degreesToRadians(10),
     rotationZ: degreesToRadians(180),
@@ -36,14 +35,14 @@ const getSpring = (cardIdx: number) => {
     to: [
       {
         positionX: 4,
-        positionY: TABLEHEIGHT + 2,
-        positionZ: -4,
+        positionY: TABLE_HEIGHT + 1,
+        positionZ: -4.5,
         rotationY: degreesToRadians(0),
         rotationZ: degreesToRadians(0),
       },
       {
         positionX: randomInRange(-0.1, 0.1),
-        positionY: TABLEHEIGHT + cardIdx * 0.001,
+        positionY: TABLE_HEIGHT + cardIdx * 0.01,
         positionZ: randomInRange(0.9, 1.1),
         rotationY: randomInRange(-0.2, 0.2),
       },

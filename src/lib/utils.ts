@@ -1,14 +1,20 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
+import { RENDER_PRECISION } from "@/game/constants";
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export function toRenderPrecision(num: number): number {
+  return Number(num.toFixed(RENDER_PRECISION));
+}
+
 export function randomInRange(min: number, max: number): number {
-  return Math.random() * (max - min) + min;
+  return toRenderPrecision(Math.random() * (max - min) + min);
 }
 
 export function degreesToRadians(degrees: number): number {
-  return (degrees * Math.PI) / 180;
+  return toRenderPrecision((degrees * Math.PI) / 180);
 }

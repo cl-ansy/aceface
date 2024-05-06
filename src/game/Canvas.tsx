@@ -13,7 +13,7 @@ function Helpers() {
       <axesHelper args={[1000]} />
       {/* <cameraHelper args={[camera]} /> */}
       {/* <gridHelper args={[2000, 40]} /> */}
-      <Perf position="top-left" />
+      {/* <Perf position="top-left" /> */}
     </>
   );
 }
