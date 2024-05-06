@@ -38,7 +38,8 @@ The Firebase app will only allow connections from production domains. To test, a
 ### Performance
 
 - [x] Use frameloop="demand" and manually invalidate springs
-- [ ] Optimize asset loading / network requests
+- [x] Optimize asset loading / network requests
+- [ ] Use low-poly model for cards
 
 ### Stretch
 
