@@ -1,16 +1,9 @@
 "use client";
 
-import { Suspense } from "react";
 import { atom, useAtom, PrimitiveAtom } from "jotai";
 import { ThreeEvent } from "@react-three/fiber";
 
-import LoadingProgress from "@/game/Loaders/LoadingProgress";
-import TableCamera from "@/game/Cameras/TableCamera";
-import TableControls from "@/game/Controls/TableControls";
-import TableLighting from "@/game/Lighting/TableLighting";
-import TableMesh from "@/game/Meshes/TableMesh";
 import CardSpring from "@/game/Meshes/CardSpring";
-import { InstanceProvider } from "@/game/Meshes/GLTF/InstanceProvider";
 
 import { degreesToRadians, randomInRange } from "@/lib/utils";
 import { DECK, TABLE_HEIGHT } from "@/game/constants";
@@ -71,31 +64,9 @@ export function TableGame() {
 
   return (
     <>
-      <CardSpring
-        card={backAtom}
-        spring={DEFAULT_SPRING}
-        handleClick={onDeckClick}
-      />
       {cards.map((card, i) => (
         <CardSpring key={i} card={card} spring={springs[i]} />
       ))}
-    </>
-  );
-}
-
-export function TableScene() {
-  return (
-    <>
-      <TableCamera />
-      <TableControls />
-      <TableLighting />
-
-      <Suspense fallback={<LoadingProgress />}>
-        <InstanceProvider>
-          <TableMesh />
-          <TableGame />
-        </InstanceProvider>
-      </Suspense>
     </>
   );
 }
