@@ -1,7 +1,7 @@
 import { MeshInstance as Card } from "@/game/meshes/gltf/InstanceProvider";
 
 import { degreesToRadians } from "@/lib/utils";
-import { DECK, TABLE_HEIGHT } from "@/game/constants";
+import { TABLE_HEIGHT } from "@/game/constants";
 
 export default function ShoeMesh() {
   return (

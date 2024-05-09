@@ -1,6 +1,6 @@
 "use client";
 
-import { Canvas as ThreeCanvas, useThree } from "@react-three/fiber";
+import { Canvas as ThreeCanvas } from "@react-three/fiber";
 import { Grid, Stats } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 

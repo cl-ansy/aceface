@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { PerspectiveCamera } from "@react-three/drei";
 
 export default function TableCamera(props: any) {
