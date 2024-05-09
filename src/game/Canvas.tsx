@@ -4,8 +4,6 @@ import { Canvas as ThreeCanvas } from "@react-three/fiber";
 import { Grid, Stats } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 
-import { TableScene } from "@/game/common/scenes/TableScene";
-
 function Helpers() {
   return (
     <>
@@ -34,7 +32,7 @@ function Ground() {
   return <Grid position={[0, -0.01, 0]} args={[10, 10]} {...gridConfig} />;
 }
 
-export function Canvas() {
+export default function Canvas({ children }: { children: React.ReactNode }) {
   return (
     <div id="canvas-container" className="h-screen w-screen">
       <ThreeCanvas
@@ -43,7 +41,7 @@ export function Canvas() {
         gl={{ sortObjects: false, antialias: true }}
       >
         <Ground />
-        <TableScene />
+        {children}
         <Helpers />
       </ThreeCanvas>
     </div>
