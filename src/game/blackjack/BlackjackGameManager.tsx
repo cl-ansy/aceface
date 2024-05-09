@@ -4,6 +4,7 @@ import { atom, useAtom, PrimitiveAtom } from "jotai";
 import { ThreeEvent } from "@react-three/fiber";
 
 import CardSpring from "@/game/common/meshes/CardSpring";
+import { PlayerInterface } from "@/game/blackjack/PlayerInterface";
 
 import { degreesToRadians, randomInRange } from "@/lib/utils";
 import { DECK, TABLE_HEIGHT } from "@/game/constants";
@@ -43,7 +44,6 @@ const getSpring = (cardIdx: number) => {
   };
 };
 
-const backAtom = atom("Joker");
 const cardsAtom = atom<PrimitiveAtom<string>[]>([]);
 const springsAtom = atom<any>([]);
 
@@ -64,6 +64,7 @@ export default function BlackjackGameManager() {
 
   return (
     <>
+      <PlayerInterface />
       {cards.map((card, i) => (
         <CardSpring key={i} card={card} spring={springs[i]} />
       ))}
