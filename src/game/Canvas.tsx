@@ -4,7 +4,7 @@ import { Canvas as ThreeCanvas } from "@react-three/fiber";
 import { Grid, Stats } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 
-import { BlackjackScene } from "@/game/scenes/BlackjackScene";
+import { TableScene } from "@/game/common/scenes/TableScene";
 
 function Helpers() {
   return (
@@ -43,7 +43,7 @@ export function Canvas() {
         gl={{ sortObjects: false, antialias: true }}
       >
         <Ground />
-        <BlackjackScene />
+        <TableScene />
         <Helpers />
       </ThreeCanvas>
     </div>

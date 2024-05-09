@@ -1,4 +1,4 @@
-import { MeshInstance as Card } from "@/game/meshes/gltf/InstanceProvider";
+import { MeshInstance as Card } from "@/game/common/meshes/gltf/InstanceProvider";
 
 import { degreesToRadians } from "@/lib/utils";
 import { TABLE_HEIGHT } from "@/game/constants";

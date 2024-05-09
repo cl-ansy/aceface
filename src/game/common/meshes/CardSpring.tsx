@@ -12,7 +12,7 @@ import {
 } from "@react-spring/three";
 import { PrimitiveAtom } from "jotai";
 
-import { MeshInstance as Card } from "@/game/meshes/gltf/InstanceProvider";
+import { MeshInstance as Card } from "@/game/common/meshes/gltf/InstanceProvider";
 
 type CardSpringValues = SpringValues<{
   positionX?: number;
