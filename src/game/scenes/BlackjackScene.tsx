@@ -2,14 +2,14 @@
 
 import { Suspense } from "react";
 
-import { HandActions } from "@/game/Actions/HandActions";
-import LoadingProgress from "@/game/Loaders/LoadingProgress";
-import TableCamera from "@/game/Cameras/TableCamera";
-import TableControls from "@/game/Controls/TableControls";
-import TableLighting from "@/game/Lighting/TableLighting";
-import TableMesh from "@/game/Meshes/TableMesh";
-import ShoeMesh from "@/game/Meshes/ShoeMesh";
-import { InstanceProvider } from "@/game/Meshes/GLTF/InstanceProvider";
+import { HandActions } from "@/game/actions/HandActions";
+import LoadingProgress from "@/game/loaders/LoadingProgress";
+import TableCamera from "@/game/cameras/TableCamera";
+import TableControls from "@/game/controls/TableControls";
+import TableLighting from "@/game/lighting/TableLighting";
+import TableMesh from "@/game/meshes/TableMesh";
+import ShoeMesh from "@/game/meshes/ShoeMesh";
+import { InstanceProvider } from "@/game/meshes/gltf/InstanceProvider";
 import BlackjackGameManager from "@/game/BlackjackGameManager";
 
 export function BlackjackScene() {

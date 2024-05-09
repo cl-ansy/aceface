@@ -4,7 +4,7 @@ import { Canvas as ThreeCanvas, useThree } from "@react-three/fiber";
 import { Grid, Stats } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 
-import { BlackjackScene } from "@/game/Scenes/BlackjackScene";
+import { BlackjackScene } from "@/game/scenes/BlackjackScene";
 
 function Helpers() {
   return (

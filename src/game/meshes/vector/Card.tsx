@@ -1,10 +1,10 @@
-import "@/game/Loaders/CardPreloader";
+import "@/game/loaders/CardPreloader";
 
 import { useTexture } from "@react-three/drei";
 import { animated } from "@react-spring/three";
 import { type AnimatedProps } from "@react-spring/three";
 
-import { RoundedBoxFlat } from "@/game/Geometries/RoundedBoxFlat";
+import { RoundedBoxFlat } from "@/game/geometries/RoundedBoxFlat";
 import { MeshProps } from "@react-three/fiber";
 
 const CardGeometry = RoundedBoxFlat(6.35, 8.89, 0.1, 0.35, 4);

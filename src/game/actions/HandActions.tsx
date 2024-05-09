@@ -1,7 +1,7 @@
 import { Html } from "@react-three/drei";
 
-import { HitButton } from "@/game/Actions/Hit";
-import { StandButton } from "@/game/Actions/Stand";
+import { HitButton } from "@/game/actions/Hit";
+import { StandButton } from "@/game/actions/Stand";
 
 export const HandActions = () => {
   return (
