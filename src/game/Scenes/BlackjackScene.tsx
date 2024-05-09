@@ -10,7 +10,7 @@ import TableLighting from "@/game/Lighting/TableLighting";
 import TableMesh from "@/game/Meshes/TableMesh";
 import ShoeMesh from "@/game/Meshes/ShoeMesh";
 import { InstanceProvider } from "@/game/Meshes/GLTF/InstanceProvider";
-import { TableGame } from "@/game/Scenes/TableScene";
+import BlackjackGameManager from "@/game/BlackjackGameManager";
 
 export function BlackjackScene() {
   return (
@@ -24,7 +24,7 @@ export function BlackjackScene() {
         <InstanceProvider>
           <TableMesh />
           <ShoeMesh />
-          {/* <TableGame /> */}
+          <BlackjackGameManager />
         </InstanceProvider>
       </Suspense>
     </>

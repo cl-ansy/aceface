@@ -47,7 +47,7 @@ const backAtom = atom("Joker");
 const cardsAtom = atom<PrimitiveAtom<string>[]>([]);
 const springsAtom = atom<any>([]);
 
-export function TableGame() {
+export default function BlackjackGameManager() {
   const [springs, setSprings] = useAtom(springsAtom);
   const [cards, setCards] = useAtom(cardsAtom);
 
