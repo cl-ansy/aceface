@@ -15,14 +15,14 @@ const config: Config = {
         mainAccent: "#9e66ff", // not needed for shadcn
       },
       borderRadius: {
-        base: "5px",
+        base: "4px",
       },
       boxShadow: {
-        base: "4px 4px 0px 0px rgba(0,0,0,1)",
+        base: "2px 2px 0px 0px rgba(0,0,0,1)",
       },
       translate: {
-        boxShadowX: "4px",
-        boxShadowY: "4px",
+        boxShadowX: "2px",
+        boxShadowY: "2px",
       },
       fontWeight: {
         base: "500",
