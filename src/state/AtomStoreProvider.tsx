@@ -3,7 +3,7 @@
 import { Provider } from "jotai";
 
 import { Subscribers } from "@/firebase/subscribers";
-import { atomStore } from "@/atoms/userAtoms";
+import { atomStore } from "@/state/userAtoms";
 
 type AtomStoreProviderProps = {
   children: React.ReactNode;

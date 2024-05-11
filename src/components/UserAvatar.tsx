@@ -3,7 +3,7 @@ import { AiOutlineUser } from "react-icons/ai";
 
 import Avatar from "@/components/ui/Avatar";
 
-import { displayNameAtom, userUidAtom } from "@/atoms/userAtoms";
+import { displayNameAtom, userUidAtom } from "@/state/userAtoms";
 
 export function UserAvatar() {
   const displayName = useAtomValue(displayNameAtom);

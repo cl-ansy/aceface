@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/DropdownMenu";
 
-import { userUidAtom, displayNameAtom, clearAuthAtom } from "@/atoms/userAtoms";
+import { userUidAtom, displayNameAtom, clearAuthAtom } from "@/state/userAtoms";
 
 function AuthContent() {
   const displayName = useAtomValue(displayNameAtom);

@@ -1,7 +1,7 @@
 import { useAtomValue } from "jotai";
 
 import CardMesh from "@/game/common/meshes/CardMesh";
-import { playerFamily } from "@/atoms/blackjackAtoms";
+import { playerFamily } from "@/state/blackjackAtoms";
 
 type PlayerProps = {
   position: number;

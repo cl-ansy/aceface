@@ -7,7 +7,7 @@ import { AuthDropdownMenu } from "@/components/AuthDropdownMenu";
 import { AuthDialog } from "@/components/AuthDialog";
 import Badge from "@/components/ui/Badge";
 
-import { balanceAtom, userUidAtom } from "@/atoms/userAtoms";
+import { balanceAtom, userUidAtom } from "@/state/userAtoms";
 
 function Navbar() {
   const userUid = useAtomValue(userUidAtom);
