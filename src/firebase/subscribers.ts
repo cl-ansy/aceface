@@ -3,8 +3,8 @@
 import { useEffect } from "react";
 import { useSetAtom } from "jotai";
 
-import { onAuthStateChanged } from "@/lib/firebase/auth";
-import { authAtom, authPendingAtom } from "@/state/atoms";
+import { onAuthStateChanged } from "@/firebase/auth";
+import { authAtom, authPendingAtom } from "@/atoms/userAtoms";
 
 const useAuthSub = () => {
   const setAuth = useSetAtom(authAtom);

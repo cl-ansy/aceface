@@ -1,6 +1,6 @@
 import { doc, onSnapshot, DocumentData } from "firebase/firestore";
 
-import { firestore } from "@/lib/firebase/firebase";
+import { firestore } from "@/firebase/firebase";
 
 export const getWalletByUserId = (
   userUid: string | undefined,

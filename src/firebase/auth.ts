@@ -6,7 +6,7 @@ import {
   createUserWithEmailAndPassword as _createUserWithEmailAndPassword,
 } from "firebase/auth";
 
-import { auth } from "@/lib/firebase/firebase";
+import { auth } from "@/firebase/firebase";
 
 export function onAuthStateChanged(cb: NextOrObserver<User>) {
   return _onAuthStateChanged(auth, cb);

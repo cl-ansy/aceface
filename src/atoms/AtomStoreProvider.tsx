@@ -2,8 +2,8 @@
 
 import { Provider } from "jotai";
 
-import { Subscribers } from "@/state/subscribers";
-import { atomStore } from "@/state/atoms";
+import { Subscribers } from "@/firebase/subscribers";
+import { atomStore } from "@/atoms/userAtoms";
 
 type AtomStoreProviderProps = {
   children: React.ReactNode;

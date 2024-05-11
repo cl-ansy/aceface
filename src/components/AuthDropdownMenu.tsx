@@ -1,6 +1,6 @@
 import { useAtomValue, useSetAtom } from "jotai";
 
-import { signInAnonymously } from "@/lib/firebase/auth";
+import { signInAnonymously } from "@/firebase/auth";
 import { UserAvatar } from "@/components/UserAvatar";
 import {
   DropdownMenu,
@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/DropdownMenu";
 
-import { userUidAtom, displayNameAtom, clearAuthAtom } from "@/state/atoms";
+import { userUidAtom, displayNameAtom, clearAuthAtom } from "@/atoms/userAtoms";
 
 function AuthContent() {
   const displayName = useAtomValue(displayNameAtom);

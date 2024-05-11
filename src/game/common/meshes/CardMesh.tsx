@@ -29,10 +29,9 @@ type CardSpring = {
   config?: SpringConfig;
 };
 
-type CardSpringProps = {
+type CardMeshProps = {
   card: PrimitiveAtom<string>;
   spring: CardSpring;
-  handleClick?: (event: ThreeEvent<MouseEvent>) => void;
 };
 
 // Standard card dimensions
@@ -40,11 +39,7 @@ type CardSpringProps = {
 // Height: 3.5 in | 88.9 mm
 // Depth: 2mm
 // Radius: 3.5mm
-export default function CardSpring({
-  card,
-  spring,
-  handleClick,
-}: CardSpringProps) {
+export default function CardMesh({ card, spring }: CardMeshProps) {
   const isAnimating = useRef(false);
   const cardName = useAtomValue(card);
   const { invalidate } = useThree();
@@ -64,7 +59,6 @@ export default function CardSpring({
   return (
     <Card
       name={cardName}
-      onClick={handleClick}
       position-x={positionX}
       position-y={positionY}
       position-z={positionZ}

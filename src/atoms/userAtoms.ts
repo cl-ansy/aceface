@@ -3,8 +3,8 @@ import { focusAtom } from "jotai-optics";
 import { Unsubscribe, type User } from "firebase/auth";
 import { type DocumentData } from "firebase/firestore";
 
-import { signOut } from "@/lib/firebase/auth";
-import { getWalletByUserId } from "@/lib/firebase/firestore";
+import { signOut } from "@/firebase/auth";
+import { getWalletByUserId } from "@/firebase/firestore";
 
 export type Wallet = {
   balance?: number;

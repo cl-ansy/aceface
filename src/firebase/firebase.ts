@@ -4,7 +4,7 @@ import { initializeApp, getApps } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-import { firebaseConfig } from "@/lib/firebase/config";
+import { firebaseConfig } from "@/firebase/config";
 
 export const firebaseApp =
   getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];

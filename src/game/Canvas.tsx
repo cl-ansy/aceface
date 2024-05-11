@@ -7,11 +7,11 @@ import { Perf } from "r3f-perf";
 function Helpers() {
   return (
     <>
-      {/* <arrowHelper /> */}
-      {/* <axesHelper args={[50]} /> */}
-      {/* <gridHelper args={[2000, 40]} /> */}
+      <arrowHelper />
+      <axesHelper args={[50]} />
+      <gridHelper args={[2000, 40]} />
       <Perf position="top-left" />
-      {/* <Stats /> */}
+      <Stats />
     </>
   );
 }
@@ -42,7 +42,7 @@ export default function Canvas({ children }: { children: React.ReactNode }) {
       >
         <Ground />
         {children}
-        <Helpers />
+        {/* <Helpers /> */}
       </ThreeCanvas>
     </div>
   );

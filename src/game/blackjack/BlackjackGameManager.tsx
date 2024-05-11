@@ -3,7 +3,7 @@
 import { atom, useAtom, PrimitiveAtom } from "jotai";
 import { ThreeEvent } from "@react-three/fiber";
 
-import CardSpring from "@/game/common/meshes/CardSpring";
+import Player from "@/game/blackjack/Player";
 import { PlayerInterface } from "@/game/blackjack/PlayerInterface";
 
 import { degreesToRadians, randomInRange } from "@/lib/utils";
@@ -65,9 +65,14 @@ export default function BlackjackGameManager() {
   return (
     <>
       <PlayerInterface />
-      {cards.map((card, i) => (
+      <Player position={1} />
+      <Player position={2} />
+      <Player position={3} />
+      <Player position={4} />
+      <Player position={5} />
+      {/* {cards.map((card, i) => (
         <CardSpring key={i} card={card} spring={springs[i]} />
-      ))}
+      ))} */}
     </>
   );
 }
