@@ -22,12 +22,12 @@ const initialGameData = {
     1: null,
     2: null,
     3: {
-      handUid: "",
       userUid: "asdf",
+      handUid: "",
       displayName: "Wowza",
       hand: {
-        0: "AH",
-        1: "QH",
+        0: "HA",
+        1: "HQ",
       },
     },
     4: null,
@@ -37,7 +37,7 @@ const initialGameData = {
     handUid: "",
     hand: {
       0: "0",
-      1: "KS",
+      1: "SK",
     },
   },
 };
