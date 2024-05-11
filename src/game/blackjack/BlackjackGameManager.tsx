@@ -9,11 +9,11 @@ export default function BlackjackGameManager() {
     <>
       <PlayerInterface />
       <ShoeMesh />
-      <Player position={1} />
-      <Player position={2} />
-      <Player position={3} />
-      <Player position={4} />
-      <Player position={5} />
+      <Player seat={1} />
+      <Player seat={2} />
+      <Player seat={3} />
+      <Player seat={4} />
+      <Player seat={5} />
     </>
   );
 }
