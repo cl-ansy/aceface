@@ -1,13 +1,5 @@
-import Canvas from "@/game/Canvas";
-import TableScene from "@/game/common/scenes/TableScene";
-import BlackjackScene from "@/game/blackjack/BlackjackScene";
+import Blackjack from "@/game/blackjack/Blackjack";
 
 export default function Page() {
-  return (
-    <Canvas>
-      <TableScene>
-        <BlackjackScene />
-      </TableScene>
-    </Canvas>
-  );
+  return <Blackjack />;
 }

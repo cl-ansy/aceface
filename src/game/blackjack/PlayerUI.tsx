@@ -1,15 +1,14 @@
-import { Html } from "@react-three/drei";
-
+import { ui } from "@/game/blackjack/Blackjack";
 import { HitButton } from "@/game/blackjack/actions/Hit";
 import { StandButton } from "@/game/blackjack/actions/Stand";
 
-export const PlayerInterface = () => {
+export const PlayerUI = () => {
   return (
-    <Html center={true} position={[0, 10, 3]}>
+    <ui.In>
       <div className="flex space-x-3">
         <HitButton />
         <StandButton />
       </div>
-    </Html>
+    </ui.In>
   );
 };
