@@ -36,8 +36,13 @@ export default function Player({ seat, playerAtom }: PlayerProps) {
 
   return (
     <>
-      {player.hand.map((card, i) => (
-        <MemoizedCard key={i} index={i} name={card} seat={seat} />
+      {Object.keys(player.hand).map((cardNumber) => (
+        <MemoizedCard
+          key={cardNumber}
+          index={Number(cardNumber)}
+          name={player.hand[Number(cardNumber)]}
+          seat={seat}
+        />
       ))}
     </>
   );

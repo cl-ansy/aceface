@@ -14,10 +14,9 @@ export type Round = {
   turn: number;
 };
 
-// export type Hand = {
-//   [key: number]: string;
-// };
-export type Hand = string[];
+export type Hand = {
+  [key: number]: string;
+};
 
 export type Player = {
   handUid?: string;

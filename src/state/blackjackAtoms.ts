@@ -20,16 +20,19 @@ const initialGameData = {
     turn: 1,
   },
   players: {
-    1: { hand: [] },
-    2: { hand: [] },
+    1: { hand: {} },
+    2: { hand: {} },
     3: {
       userUid: "asdf",
       handUid: "",
       displayName: "Wowza",
-      hand: ["HA", "HQ"],
+      hand: {
+        0: "HA",
+        1: "HQ",
+      },
     },
-    4: { hand: [] },
-    5: { hand: [] },
+    4: { hand: {} },
+    5: { hand: {} },
   },
   dealer: {
     handUid: "",

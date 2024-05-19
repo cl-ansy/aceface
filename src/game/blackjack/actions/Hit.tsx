@@ -15,7 +15,10 @@ export const HitButton = () => {
         ...game.players,
         3: {
           ...game.players[3],
-          hand: [...game.players[3].hand, "S3"],
+          hand: {
+            ...game.players[3].hand,
+            [Object.keys(game.players[3].hand).length]: "S3",
+          },
         },
       },
     };
