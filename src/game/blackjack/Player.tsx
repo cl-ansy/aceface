@@ -1,23 +1,43 @@
-import { useState, useEffect, useMemo } from "react";
-import { atom, useAtomValue } from "jotai";
+"use client";
+
+import { memo } from "react";
+import { useAtomValue } from "jotai";
 
 import CardMesh from "@/game/common/meshes/CardMesh";
-import { playerFamily } from "@/state/blackjackAtoms";
 import { getCardSpring } from "@/lib/animations";
+
+import type { Atom } from "jotai";
+import type { Player } from "@/game/blackjack/blackjackTypes";
 
 type PlayerProps = {
   seat: number;
+  playerAtom: Atom<Player>;
 };
 
-export default function Player({ seat }: PlayerProps) {
-  const player = useAtomValue(playerFamily(seat));
+function Card({
+  index,
+  name,
+  seat,
+}: {
+  index: number;
+  name: string;
+  seat: number;
+}) {
+  const spring = getCardSpring(index + 1, seat);
+  return <CardMesh name={name} spring={spring} />;
+}
+
+const MemoizedCard = memo(Card);
+
+export default function Player({ seat, playerAtom }: PlayerProps) {
+  const player = useAtomValue(playerAtom);
 
   if (!player || !player.hand) return null;
 
   return (
     <>
-      {Object.entries(player.hand).map(([k, v], i) => (
-        <CardMesh key={i} name={v} spring={getCardSpring(Number(k), seat)} />
+      {player.hand.map((card, i) => (
+        <MemoizedCard key={i} index={i} name={card} seat={seat} />
       ))}
     </>
   );

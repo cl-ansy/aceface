@@ -1,16 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { useAtomValue } from "jotai";
-import { ThreeEvent, useFrame, useThree } from "@react-three/fiber";
-import {
-  useSpring,
-  SpringValues,
-  GoalValue,
-  ToProps,
-  SpringConfig,
-} from "@react-spring/three";
-import { PrimitiveAtom } from "jotai";
+import { useFrame, useThree } from "@react-three/fiber";
+import { useSpring, SpringConfig } from "@react-spring/three";
 
 import { MeshInstance } from "@/game/common/meshes/gltf/InstanceProvider";
 
@@ -32,6 +24,7 @@ type CardSpring = {
 type CardMeshProps = {
   name: string;
   spring: CardSpring;
+  onClick?: () => void;
 };
 
 // Standard card dimensions
@@ -39,7 +32,7 @@ type CardMeshProps = {
 // Height: 3.5 in | 88.9 mm
 // Depth: 2mm
 // Radius: 3.5mm
-export default function CardMesh({ name, spring }: CardMeshProps) {
+export default function CardMesh({ name, spring, onClick }: CardMeshProps) {
   const isAnimating = useRef(false);
   const { invalidate } = useThree();
 
@@ -58,6 +51,7 @@ export default function CardMesh({ name, spring }: CardMeshProps) {
   return (
     <MeshInstance
       name={name}
+      onClick={onClick}
       position-x={positionX}
       position-y={positionY}
       position-z={positionZ}
